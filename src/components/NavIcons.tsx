@@ -49,7 +49,7 @@ const NavIcons = () => {
           height={22}
           onClick={()=>setIsCartOpen((prev)=>!prev)}
         />
-        <div className="absolute -top-4 -right-4 w-6 h-6 bg-pink rounded-full text-white text-sm flex items-center justify-center">2</div>
+        <div className="absolute -top-4 -right-4 w-6 h-6 bg-primary rounded-full text-white text-sm flex items-center justify-center">2</div>
       </div>
       {
         isCartOpen && (
