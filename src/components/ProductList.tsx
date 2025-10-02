@@ -6,27 +6,29 @@ import DOMPurify from "isomorphic-dompurify";
 
 const PRODUCT_PER_PAGE = 20;
 
+interface IProductList {
+  categoryId: string;
+  limit?: number;
+  searchParams?: any;
+}
+
 const ProductList = async ({
   categoryId, 
   limit
-}:{
-  categoryId:string; 
-  limit?:number
-}) => {
+}:IProductList) => {
   const wixClient = await wixClientServer();
-  const res = await wixClient.products
+  const listOfProducts = await wixClient.products
     .queryProducts()
     .eq("collectionIds",categoryId)
     .limit(limit || PRODUCT_PER_PAGE)
     .find();
 
-  console.log(res.items[0].priceData);
   return (
     <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
       {/* ITEM */}
 
       {
-        res.items.map((product: products.Product)=>(
+        listOfProducts.items.map((product: products.Product)=>(
           <Link 
             href={"/"+product.slug}
             className="w-full flex flex-col gap-4 sm:w-[45%] lg:w-[22%]"
