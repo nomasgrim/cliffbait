@@ -8,7 +8,7 @@ const slides = [
   {
     id: 1,
     title: "Cliffords Big Red Worm",
-    description: "Injecting Soon",
+    description: "Its like Click Bait, but Cliff Bait, the difference are the f's. Its for fish",
     img: "https://images.pexels.com/photos/33668051/pexels-photo-33668051.jpeg",
     url: "/",
     bg: "bg-gradient-to-r from-yellow-50 to-pink-50"

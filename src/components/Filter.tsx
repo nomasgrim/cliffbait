@@ -5,7 +5,7 @@ const Filter = () => {
         <select 
           name="type" 
           id="" 
-          className="py-2 px4 rounded-2xl text-xs font-medium bg-gray-200"
+          className="py-2 px-4 rounded-2xl text-xs font-medium bg-gray-200"
         >
           <option>Type</option>
           <option value="finesse">Finesse</option>
@@ -26,7 +26,7 @@ const Filter = () => {
         <select 
           name="size" 
           id="" 
-          className="py-2 px4 rounded-2xl text-xs font-medium bg-gray-200"
+          className="py-2 px-4 rounded-2xl text-xs font-medium bg-gray-200"
         >
           <option>Size</option>
           <option value="">Size</option>
@@ -34,7 +34,7 @@ const Filter = () => {
         <select 
           name="color" 
           id="" 
-          className="py-2 px4 rounded-2xl text-xs font-medium bg-gray-200"
+          className="py-2 px-4 rounded-2xl text-xs font-medium bg-gray-200"
         >
           <option>Color</option>
           <option value="junebug">Junebug</option>
@@ -44,7 +44,7 @@ const Filter = () => {
         <select 
           name="category" 
           id="" 
-          className="py-2 px4 rounded-2xl text-xs font-medium bg-gray-200"
+          className="py-2 px-4 rounded-2xl text-xs font-medium bg-gray-200"
         >
           <option>Category</option>
           <option value="new">New Arrival</option>
@@ -54,7 +54,7 @@ const Filter = () => {
         <select 
           name="" 
           id="" 
-          className="py-2 px4 rounded-2xl text-xs font-medium bg-gray-200"
+          className="py-2 px-4 rounded-2xl text-xs font-medium bg-gray-200"
         >
           <option>All Filters</option>
         </select>
@@ -63,7 +63,7 @@ const Filter = () => {
         <select 
           name="" 
           id="" 
-          className="py-2 px4 rounded-2xl text-xs font-medium bg-gray-200"
+          className="py-2 px-4 rounded-2xl text-xs font-medium bg-gray-200"
         >
           <option>Sort By</option>
           <option value="">Price (low to high)</option>
