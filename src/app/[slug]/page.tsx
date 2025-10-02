@@ -24,7 +24,7 @@ const SinglePage = async ({
     return notFound();
   }
 
-  console.log("product", products);
+  console.log("product", product.productOptions);
   return (
     <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative flex flex-col lg:flex-row gap-16">
       {/* IMG */}
@@ -57,26 +57,24 @@ const SinglePage = async ({
           </>
         )}
         </div>
+
         <div className="h-[2px] bg-gray-100" />
-        <CustomizeProducts />
-        <Add />
+
+        {product._id && product.variants && product.productOptions ? (
+          <CustomizeProducts productId={product._id} variants={product.variants} productOptions={product.productOptions} />
+        ): (
+          <Add productId={product._id||""} variantId="00000000-0000-0000-0000-000000000000" stockNumber={product.stock?.quantity || 0} />
+        )}
+
         <div className="h-[2px] bg-gray-100" />
-        <div className="text-sm">
-          <h4 className="font-medium mb-4 ">Title</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eleifend finibus neque non auctor. Fusce gravida dolor eu enim fermentum, quis dapibus mi fermentum. Aenean auctor nisl placerat lacus tempus porttitor. Nullam ullamcorper erat eget ante imperdiet, id accumsan justo cursus. Curabitur ultrices libero ipsum, at gravida elit eleifend sit amet. Nam volutpat ligula at sapien volutpat, vel consectetur turpis consectetur. Pellentesque a ornare dui, eu fermentum massa. Fusce diam magna, iaculis non fermentum interdum, iaculis eu ex. Sed ut turpis neque. In gravida, felis quis mollis pellentesque, eros est auctor velit, sed luctus orci nulla at magna. Vestibulum non ultricies orci.</p>
-        </div>
-        <div className="text-sm">
-          <h4 className="font-medium mb-4 ">Title</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eleifend finibus neque non auctor. Fusce gravida dolor eu enim fermentum, quis dapibus mi fermentum. Aenean auctor nisl placerat lacus tempus porttitor. Nullam ullamcorper erat eget ante imperdiet, id accumsan justo cursus. Curabitur ultrices libero ipsum, at gravida elit eleifend sit amet. Nam volutpat ligula at sapien volutpat, vel consectetur turpis consectetur. Pellentesque a ornare dui, eu fermentum massa. Fusce diam magna, iaculis non fermentum interdum, iaculis eu ex. Sed ut turpis neque. In gravida, felis quis mollis pellentesque, eros est auctor velit, sed luctus orci nulla at magna. Vestibulum non ultricies orci.</p>
-        </div>
-        <div className="text-sm">
-          <h4 className="font-medium mb-4 ">Title</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eleifend finibus neque non auctor. Fusce gravida dolor eu enim fermentum, quis dapibus mi fermentum. Aenean auctor nisl placerat lacus tempus porttitor. Nullam ullamcorper erat eget ante imperdiet, id accumsan justo cursus. Curabitur ultrices libero ipsum, at gravida elit eleifend sit amet. Nam volutpat ligula at sapien volutpat, vel consectetur turpis consectetur. Pellentesque a ornare dui, eu fermentum massa. Fusce diam magna, iaculis non fermentum interdum, iaculis eu ex. Sed ut turpis neque. In gravida, felis quis mollis pellentesque, eros est auctor velit, sed luctus orci nulla at magna. Vestibulum non ultricies orci.</p>
-        </div>
-        <div className="text-sm">
-          <h4 className="font-medium mb-4 ">Title</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eleifend finibus neque non auctor. Fusce gravida dolor eu enim fermentum, quis dapibus mi fermentum. Aenean auctor nisl placerat lacus tempus porttitor. Nullam ullamcorper erat eget ante imperdiet, id accumsan justo cursus. Curabitur ultrices libero ipsum, at gravida elit eleifend sit amet. Nam volutpat ligula at sapien volutpat, vel consectetur turpis consectetur. Pellentesque a ornare dui, eu fermentum massa. Fusce diam magna, iaculis non fermentum interdum, iaculis eu ex. Sed ut turpis neque. In gravida, felis quis mollis pellentesque, eros est auctor velit, sed luctus orci nulla at magna. Vestibulum non ultricies orci.</p>
-        </div>
+
+        {/* ADDITIONAL INFORMATION SECTIONS */}
+        {product.additionalInfoSections && product.additionalInfoSections.map((section:any) => (
+          <div className="text-sm">
+            <h4 className="font-medium mb-4">{section.title}</h4>
+            <p>{section.description}</p>
+          </div>
+        ))} 
       </div>
     </div>
   )

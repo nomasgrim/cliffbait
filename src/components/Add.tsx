@@ -2,16 +2,24 @@
 
 import { useState } from "react";
 
-const Add = () => {
+interface IAdd {
+  productId: string;
+  variantId: string;
+  stockNumber: number;
+}
+
+const Add = ({
+  productId,
+  variantId,
+  stockNumber
+}:IAdd) => {
   const [quantity, setQuantity] = useState(1);
 
-  // Temporary
-  const stock = 4;
 
   const handleQuantity = (type: "minus" | "plus") => {
     if(type==="minus" && quantity > 1 )
       setQuantity(prev=>prev-1)
-    if(type==="plus" && quantity < stock)
+    if(type==="plus" && quantity < stockNumber)
       setQuantity(prev=>prev+1)
   }
 
@@ -26,7 +34,7 @@ const Add = () => {
             <button className="cursor-pointer text-xl" onClick={()=>handleQuantity("plus")}>+</button>
           </div>
           <div className="text-xs">
-            Only <span className="text-orange-500">{stock - quantity} items</span> left!<br />
+            Only <span className="text-orange-500">{stockNumber - quantity} items</span> left!<br />
             {"Don't"} miss it
           </div>
         </div>
