@@ -1,4 +1,21 @@
-const Filter = () => {
+"use client";
+
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import path from "path";
+
+const  Filter = () => {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const {replace} = useRouter();
+
+  const handleFilterChange = (e:React.ChangeEvent<HTMLSelectElement|HTMLInputElement>)=> {
+    const {name, value} = e.target;
+
+    const params = new URLSearchParams(searchParams);
+    params.set(name,value);
+    replace(`${pathname}?${params.toString()}`)
+  };
+   
   return (
     <div className="mt-12 flex justify-between">
       <div className="flex gap-6 flex-wrap">
@@ -6,45 +23,31 @@ const Filter = () => {
           name="type" 
           id="" 
           className="py-2 px-4 rounded-2xl text-xs font-medium bg-gray-200"
+          onChange={handleFilterChange}
         >
           <option>Type</option>
-          <option value="finesse">Finesse</option>
-          <option value="speed">Ultra Speed Worm</option>
+          <option value="physical">physical</option>
+          <option value="digital">digital</option>
         </select>
         <input 
           type="text" 
           name="min"
           placeholder="min price"
           className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
+          onChange={handleFilterChange}
         />
         <input 
           type="text" 
           name="max"
           placeholder="max price"
           className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
+          onChange={handleFilterChange}
         />
-        <select 
-          name="size" 
-          id="" 
-          className="py-2 px-4 rounded-2xl text-xs font-medium bg-gray-200"
-        >
-          <option>Size</option>
-          <option value="">Size</option>
-        </select>
-        <select 
-          name="color" 
-          id="" 
-          className="py-2 px-4 rounded-2xl text-xs font-medium bg-gray-200"
-        >
-          <option>Color</option>
-          <option value="junebug">Junebug</option>
-          <option value="crabapple">Crab Apple</option>
-          <option value="watermelon">Watermelon</option>
-        </select>
         <select 
           name="category" 
           id="" 
           className="py-2 px-4 rounded-2xl text-xs font-medium bg-gray-200"
+          onChange={handleFilterChange}
         >
           <option>Category</option>
           <option value="new">New Arrival</option>
@@ -61,15 +64,16 @@ const Filter = () => {
       </div>
       <div className="">
         <select 
-          name="" 
+          name="sort" 
           id="" 
           className="py-2 px-4 rounded-2xl text-xs font-medium bg-gray-200"
+          onChange={handleFilterChange}
         >
           <option>Sort By</option>
-          <option value="">Price (low to high)</option>
-          <option value="">Price (high to low)</option>
-          <option value="">Newest</option>
-          <option value="">Oldest</option>
+          <option value="asc price">Price (low to high)</option>
+          <option value="desc price">Price (high to low)</option>
+          <option value="asc lastUpdated">Newest</option>
+          <option value="desc lastUpdated">Oldest</option>
         </select>   
       </div>
     </div>

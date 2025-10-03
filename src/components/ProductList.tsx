@@ -3,6 +3,7 @@ import { products } from "@wix/stores";
 import Image from "next/image"
 import Link from "next/link"
 import DOMPurify from "isomorphic-dompurify";
+import { notFound } from "next/navigation";
 
 const PRODUCT_PER_PAGE = 20;
 
@@ -14,14 +15,39 @@ interface IProductList {
 
 const ProductList = async ({
   categoryId, 
-  limit
+  limit,
+  searchParams
 }:IProductList) => {
   const wixClient = await wixClientServer();
-  const listOfProducts = await wixClient.products
+  
+  // Setup query, before we conditional execute it with .find
+  let productQuery = wixClient.products
     .queryProducts()
+    .startsWith("name", searchParams?.name || "")
     .eq("collectionIds",categoryId)
+    .hasSome("productType", [searchParams?.type || "physical", "digital"])
+    .gt("priceData.price", searchParams?.min || 0)
+    .lt("priceData.price", searchParams?.max || 999999)
     .limit(limit || PRODUCT_PER_PAGE)
-    .find();
+    // .descending("price")
+    // .find();
+
+  // console.log('ProductList searchParams:', searchParams)  
+  if(searchParams?.sort) {
+    const [sortType, sortBy] = searchParams?.sort.split(" ");
+    console.log('sortType', sortType);
+    if(sortType === "asc") {
+      console.log('sortBy', sortBy);
+      productQuery = productQuery.ascending(sortBy)
+    }
+    if(sortType === "desc") {
+      productQuery = productQuery.descending(sortBy)
+    }
+  }
+
+  const listOfProducts = await productQuery.find();
+
+  if(!listOfProducts) return notFound();
 
   return (
     <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">

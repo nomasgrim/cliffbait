@@ -28,17 +28,17 @@ const Footer = () => {
             <h1 className="font-medium text-lg">Company</h1>
             <div className="flex flex-col gap-6">
               <Link href="/">Home</Link>
-              <Link href="/shop">Shop</Link>
-              <Link href="/deals">Deals</Link>
-              <Link href="/about">About</Link>
-              <Link href="/contact">Contact</Link>
+              <Link href="/">Shop</Link>
+              <Link href="/">Deals</Link>
+              <Link href="/">About</Link>
+              <Link href="/">Contact</Link>
             </div>
           </div>
           <div className="flex flex-col gap-12">
             <h1 className="font-medium text-lg">Shop</h1>
             <div className="flex flex-col gap-6">
-              <Link href="/list?cat=arrivals">New Arrivals</Link>
-              <Link href="/list?cat=accessories">Accesssories</Link>
+              <Link href="/list?cat=featured">Featured</Link>
+              <Link href="/list?cat=worms">Worms</Link>
               <Link href="/list">All Products</Link>
             </div>
           </div>
