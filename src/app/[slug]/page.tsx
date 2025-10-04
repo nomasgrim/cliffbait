@@ -12,11 +12,11 @@ interface IParams {
 const SinglePage = async ({
   params
 }:IParams) => {
-
+  const { slug } = await params;
   const wixClient = await wixClientServer();
   const products = await wixClient.products
     .queryProducts()
-    .eq("slug",params.slug)
+    .eq("slug",slug)
     .find();
   const product = products.items[0];
 

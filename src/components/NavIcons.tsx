@@ -3,12 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CartModal from "./CartModal";
 import { useWixClient } from "@/hooks/useWixClient";
 import Cookies from "js-cookie";
+import { useCartStore } from "@/hooks/useCartStore";
 
 const NavIcons = () => {
+  const {cart, counter, getCart} = useCartStore();
   const wixClient = useWixClient();
   const router = useRouter();
 
@@ -39,7 +41,6 @@ const NavIcons = () => {
   //   window.location.href = authUrl;
   // }
 
-
   const handleLogout = async () => {
     setIsLoading(true);
     Cookies.remove("refreshToken");
@@ -48,6 +49,10 @@ const NavIcons = () => {
     setIsProfileOpen(false)
     router.push(logoutUrl);
   }
+
+  useEffect(()=>{
+    getCart(wixClient);
+  },[wixClient, getCart]);
 
   return (
     <div className="flex items-center gap-4 xl:gap-6 relative"> 
@@ -76,7 +81,12 @@ const NavIcons = () => {
           width={22} 
           height={22}
         />
-        <div className="absolute -top-4 -right-4 w-6 h-6 bg-primary rounded-full text-white text-sm flex items-center justify-center">2</div>
+        <div 
+          className="absolute -top-4 -right-4 w-6 h-6 
+            bg-primary rounded-full text-white text-sm flex items-center justify-center"
+        >
+          {counter}
+        </div>
       </div>
       {
         isCartOpen && (

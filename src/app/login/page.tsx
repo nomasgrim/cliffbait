@@ -16,7 +16,8 @@ enum MODE {
 const LoginPage = () => {
   const wixClient = useWixClient();
   const [mode,setMode] = useState(MODE.LOGIN);
-  const pathName = window.location.href;
+  const [pathName, setPathName] = useState("");
+  
   const isLoggedIn = wixClient.auth.loggedIn();
   const router = useRouter(); 
 
@@ -25,6 +26,10 @@ const LoginPage = () => {
       router.push("/");
     }
   }, [isLoggedIn]);
+
+  useEffect(()=>{
+    setPathName(window.location.href);
+  });
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -82,7 +87,7 @@ const LoginPage = () => {
             email,
             pathName
           );
-          setMessage("Passowrd reset email sent. Please check your email.")
+          setMessage("Password reset email sent. Please check your email.")
 
           break
         case MODE.EMAIL_VERIFICATION:

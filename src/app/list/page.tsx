@@ -4,15 +4,13 @@ import { wixClientServer } from "@/lib/wixClientServer";
 import Image from "next/image";
 import { Suspense } from "react";
 
-interface IListPage {
-  searchParam: string;
-};
-
 const ListPage = async ({
   searchParams
 }:any) => {
+  const pageParams = await searchParams;
+  console.log('page params', pageParams);
   const wixClient = await wixClientServer();
-  const category = await wixClient.collections.getCollectionBySlug(searchParams.cat || "all-products");
+  const category = await wixClient.collections.getCollectionBySlug(pageParams?.cat || "all-products");
   
   return (
     <div className='px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative'>
@@ -36,7 +34,7 @@ const ListPage = async ({
       <Suspense fallback={"loading"}>
         <ProductList 
           categoryId={category.collection?._id! || process.env.ALL_PRODUCTS_CATEGORY_ID!} 
-          searchParams={searchParams} 
+          searchParams={pageParams} 
         />
       </Suspense>
     </div>
