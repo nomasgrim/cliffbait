@@ -26,12 +26,12 @@ const LoginPage = () => {
     if(isLoggedIn) {
       router.push("/");
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, router]);
 
   useEffect(()=>{
     if (typeof window !== 'undefined')
       setPathName(window.location.href);
-  });
+  }, [setPathName]);
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -157,7 +157,7 @@ const LoginPage = () => {
 
   useEffect(()=>{
     setIsClient(true);
-  },[])
+  },[setIsClient])
 
   if(!isClient) return null;
   

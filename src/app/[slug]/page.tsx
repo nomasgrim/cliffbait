@@ -4,14 +4,9 @@ import ProductImages from "@/components/ProductImages";
 import { wixClientServer } from "@/lib/wixClientServer";
 import { notFound } from "next/navigation";
 
-interface IParams {
-  params: {
-    slug: string;
-  }
-};
 const SinglePage = async ({
   params
-}:IParams) => {
+}:any) => {
   const { slug } = await params;
   const wixClient = await wixClientServer();
   const products = await wixClient.products
