@@ -19,7 +19,6 @@ type CartState = {
 export const useCartStore = create<CartState>((set) => ({
   cart: {
     lineItems:[],
-    subtotal: 0
   },
   isLoading: true,
   counter: 0,
@@ -33,6 +32,7 @@ export const useCartStore = create<CartState>((set) => ({
         counter: (cart?.lineItems && cart?.lineItems.length) || 0,
       });
     } catch (err) {
+      console.error("useCartStore:getCart():", err);
       set((prev) => ({ ...prev, isLoading: false }));
     }
   },

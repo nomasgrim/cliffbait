@@ -4,11 +4,47 @@ import Image from "next/image";
 import { useCartStore } from "@/hooks/useCartStore"
 import { media as wixMedia } from "@wix/sdk"
 import { useWixClient } from "@/hooks/useWixClient";
+import { currentCart } from "@wix/ecom";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const CartModal = () => {
   const {cart, isLoading, removeItem} = useCartStore();
   const wixClient = useWixClient();
+  const [origin, setOrigin] = useState("");
+  const router = useRouter();
 
+  const handleCheckout = async () => {
+    try {
+      const checkoutResponse = await wixClient.currentCart.createCheckoutFromCurrentCart({
+        channelType: currentCart.ChannelType.WEB,
+      });
+      console.log('checkoutResponse', checkoutResponse);
+      
+      const options = {
+        ecomCheckout:{
+          checkoutId: checkoutResponse.checkoutId
+        },
+        callbacks: {
+          postFlowUrl:origin,
+          thankYouPageUrl:`${origin}/success`
+        }
+      }
+      const {redirectSession} = await wixClient.redirects.createRedirectSession(options);
+
+      if(redirectSession?.fullUrl){
+        router.push(redirectSession?.fullUrl)
+        // window.location.href = redirectSession?.fullUrl
+      }
+    } catch (error) {
+
+    }
+  }
+
+
+  useEffect(()=>{
+    setOrigin(window.location.origin);
+  },[])
   console.log("cart", cart);
 
   return (
@@ -44,8 +80,9 @@ const CartModal = () => {
                           {/* PRICE */}
                           <div className="p-1 bg-gray-50 rounded-sm flex items-center gap-2">
                             {cartItem.quantity && cartItem.quantity > 1 && (
-                              <div className='text-sm text-green-500'>{cartItem.quantity} x {cartItem.price?.amount}</div>
+                              <div className='text-sm text-green-500'>{cartItem.quantity} x</div>
                             )}
+                            ${cartItem.price?.amount}
                           </div>
                         </div>
 
@@ -89,6 +126,7 @@ const CartModal = () => {
                 <button 
                   className="rounded-md py-3 px-4 bg-black text-white disabled:cursor-not-allowed disabled:opactiy-75" 
                   disabled={isLoading}
+                  onClick={handleCheckout}
                 >
                   Checkout
                 </button>

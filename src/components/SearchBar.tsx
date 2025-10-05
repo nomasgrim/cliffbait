@@ -17,7 +17,7 @@ const SearchBar = () => {
   }
   return (
     <form className="flex ic justify-between gap-4 bg-gray-100 p-2 rounded-md flex-1" onSubmit={handleSearch}>
-      <input name="search" type="text" placeholder="search" className="flex-1 bg-transparent outline-none" />
+      <input name="search" type="text" placeholder="search" className="flex-1 bg-transparent outline-none" data-lpignore />
       <button className="cursor-ponter" >
         <Image src="/search.png" alt="search" width={16} height={16}/>
       </button>

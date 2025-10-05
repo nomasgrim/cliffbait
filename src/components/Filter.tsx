@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import path from "path";
 
 const  Filter = () => {
   const pathname = usePathname();
@@ -35,6 +34,7 @@ const  Filter = () => {
           placeholder="min price"
           className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
           onChange={handleFilterChange}
+          data-lpignore
         />
         <input 
           type="text" 
@@ -42,6 +42,7 @@ const  Filter = () => {
           placeholder="max price"
           className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
           onChange={handleFilterChange}
+          data-lpignore
         />
         <select 
           name="category" 

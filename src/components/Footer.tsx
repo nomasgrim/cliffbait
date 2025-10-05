@@ -1,7 +1,18 @@
+"use client";
+
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Footer = () => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(()=>{
+    setIsClient(true);
+  }, []);
+
+  if(!isClient) return null;
   return (
     <div className="py-24 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 bg-gray-100 text-sm mt-24">
       {/* TOP */}
@@ -61,6 +72,7 @@ const Footer = () => {
               type="text" 
               placeholder="Email Address"
               className="p-4 w-3/4"
+              data-lpignore
             />
             <button className="w-1/4 bg-primary text-white">JOIN</button>
           </div>

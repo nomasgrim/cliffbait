@@ -17,6 +17,7 @@ const LoginPage = () => {
   const wixClient = useWixClient();
   const [mode,setMode] = useState(MODE.LOGIN);
   const [pathName, setPathName] = useState("");
+  const [isClient, setIsClient] = useState(false);
   
   const isLoggedIn = wixClient.auth.loggedIn();
   const router = useRouter(); 
@@ -28,7 +29,8 @@ const LoginPage = () => {
   }, [isLoggedIn]);
 
   useEffect(()=>{
-    setPathName(window.location.href);
+    if (typeof window !== 'undefined')
+      setPathName(window.location.href);
   });
 
   const [username, setUsername] = useState("");
@@ -153,6 +155,12 @@ const LoginPage = () => {
     }
   }
 
+  useEffect(()=>{
+    setIsClient(true);
+  },[])
+
+  if(!isClient) return null;
+  
   return (
     <div className="h-[calc(100vh-80px)] px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 flex items-center justify-center">
       <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
@@ -166,6 +174,7 @@ const LoginPage = () => {
               placeholder="username" 
               className="ring-2 ring-gray-300 rounded-md p-4" 
               onChange={e=>setUsername(e.target.value)}
+              data-lpignore
             />
           </div>
         ) : null }
@@ -179,6 +188,7 @@ const LoginPage = () => {
               placeholder="john@email" 
               className="ring-2 ring-gray-300 rounded-md p-4" 
               onChange={e=>setEmail(e.target.value)}
+              data-lpignore
             />
           </div>
         ) : (
@@ -190,6 +200,7 @@ const LoginPage = () => {
               placeholder="code" 
               className="ring-2 ring-gray-300 rounded-md p-4" 
               onChange={e=>setEmailCode(e.target.value)}
+              data-lpignore
             />
           </div>
         )}
@@ -203,6 +214,7 @@ const LoginPage = () => {
               placeholder="passenter your password" 
               className="ring-2 ring-gray-300 rounded-md p-4" 
               onChange={e=>setPassword(e.target.value)}
+              data-lpignore
             />
           </div>
         ): null } 

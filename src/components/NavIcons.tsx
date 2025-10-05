@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import CartModal from "./CartModal";
 import { useWixClient } from "@/hooks/useWixClient";
@@ -10,90 +10,84 @@ import Cookies from "js-cookie";
 import { useCartStore } from "@/hooks/useCartStore";
 
 const NavIcons = () => {
-  const {cart, counter, getCart} = useCartStore();
-  const wixClient = useWixClient();
-  const router = useRouter();
+  const { cart, counter, getCart } = useCartStore();
 
+  const [isClient, setIsClient] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const router = useRouter();
+
+  const wixClient = useWixClient();
   const isLoggedIn = wixClient.auth.loggedIn();
 
-  console.log(isLoggedIn);
+  // TEMPORARY
+  // const isLoggedIn = false;
+
   const handleProfile = () => {
-    if(!isLoggedIn) {
-      router.push('/login')
-    }else{
-      setIsProfileOpen((prev)=>!prev);
+    if (!isLoggedIn) {
+      router.push("/login");
+    } else {
+      setIsProfileOpen((prev) => !prev);
     }
-  }
-
-  // // AUTH WITH WIX-MANAGED AUTH
-  // const login = async () => {
-  //   const loginRequestData =  wixClient.auth.generateOAuthData(
-  //     "http://127.0.0.1:3000"
-  //   );
-  //   console.log(loginRequestData); 
-  //   localStorage.setItem("oAuthRedirectData", JSON.stringify(loginRequestData))
-  //   const {authUrl} = await wixClient.auth.getAuthUrl(loginRequestData)
-
-  //   window.location.href = authUrl;
-  // }
+  };
 
   const handleLogout = async () => {
     setIsLoading(true);
     Cookies.remove("refreshToken");
     const { logoutUrl } = await wixClient.auth.logout(window.location.href);
     setIsLoading(false);
-    setIsProfileOpen(false)
+    setIsProfileOpen(false);
     router.push(logoutUrl);
-  }
+  };
 
   useEffect(()=>{
     getCart(wixClient);
   },[wixClient, getCart]);
 
+  useEffect(()=>{
+    setIsClient(true);
+  }, []);
+
+  if(!isClient) return null;
+
   return (
-    <div className="flex items-center gap-4 xl:gap-6 relative"> 
-      <Image 
-        src="/profile.png" 
-        alt="profile" 
-        width={22} 
-        height={22} 
+    <div className="flex items-center gap-4 xl:gap-6 relative">
+      <Image
+        src="/profile.png"
+        alt=""
+        width={22}
+        height={22}
         className="cursor-pointer"
         // onClick={login}
         onClick={handleProfile}
       />
-      {
-        isProfileOpen && (
-          <div className="absolute p-4 rounder-md top-12 left-0 bg-white text-sm shadow-[0_3px_10px_rgb(0,0,0,0.2)] z-20">
-            <Link href="/profile">Profile</Link>
-            <div className="mt-2 cursor-pointer" onClick={handleLogout}>{isLoading ? "Logging out..." :  "Logout"}</div>
+      {isProfileOpen && (
+        <div className="absolute p-4 rounded-md top-12 left-0 bg-white text-sm shadow-[0_3px_10px_rgb(0,0,0,0.2)] z-20">
+          <Link href="/profile">Profile</Link>
+          <div className="mt-2 cursor-pointer" onClick={handleLogout}>
+            {isLoading ? "Logging out" : "Logout"}
           </div>
-        )
-      }
-      <Image src="/notification.png" alt="notification" width={22} height={22} className="cursor-pointer" />
-      <div className="relative cursor-pointer" onClick={()=>setIsCartOpen((prev)=>!prev)}>
-        <Image 
-          src="/cart.png" 
-          alt="cart" 
-          width={22} 
-          height={22}
-        />
-        <div 
-          className="absolute -top-4 -right-4 w-6 h-6 
-            bg-primary rounded-full text-white text-sm flex items-center justify-center"
-        >
+        </div>
+      )}
+      <Image
+        src="/notification.png"
+        alt=""
+        width={22}
+        height={22}
+        className="cursor-pointer"
+      />
+      <div
+        className="relative cursor-pointer"
+        onClick={() => setIsCartOpen((prev) => !prev)}
+      >
+        <Image src="/cart.png" alt="" width={22} height={22} />
+        <div className="absolute -top-4 -right-4 w-6 h-6 bg-primary rounded-full text-white text-sm flex items-center justify-center">
           {counter}
         </div>
       </div>
-      {
-        isCartOpen && (
-          <CartModal />
-        )
-      }
-
+      {isCartOpen && <CartModal />}
     </div>
   );
 };
