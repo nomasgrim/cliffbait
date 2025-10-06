@@ -4,14 +4,16 @@ import { useEffect, useState } from "react";
 import Confetti from "react-confetti";
 import { useRouter } from "next/navigation";
 
-const SuccessPurchase = ({pageParams}:any) => {
+const SuccessPurchase = ({orderId}:any) => {
   
   const [param, setParams] = useState<any>({});
   const router = useRouter();
 
   useEffect(()=>{
-    const orderId = param;
-    if(!orderId) return;
+    if(!orderId) {
+      console.error('no order id');
+      return
+    };
 
     setTimeout(()=>{
       const timer = setTimeout(()=>{
@@ -24,13 +26,6 @@ const SuccessPurchase = ({pageParams}:any) => {
     },5000);
 
   },[router, param]);
-
-  useEffect(()=>{
-    console.log('pageParams', pageParams);
-    
-    setParams(pageParams);
-  }, []);
-
   return (
     <div className="flex flex-col gap-6 items-center justify-center h-[calc(100vh-180px)]">
       <Confetti width={2000} height={1000}/>
