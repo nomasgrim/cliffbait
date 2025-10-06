@@ -3,13 +3,7 @@ import { notFound } from "next/navigation";
 import { orders } from "@wix/ecom";
 import Link from "next/link";
 
-interface IParams {
-  params: {
-    id:string
-  }
-}
-
-const OrderPage = async ({params}:IParams) => {
+const OrderPage = async ({params}:any) => {
   const pageParams = await params;
   const wixClient = await wixClientServer();
   const orderId = pageParams.id;
