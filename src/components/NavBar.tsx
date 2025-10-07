@@ -12,7 +12,7 @@ const NavBar = () => {
         <Link href="/">
           <div className="text-2xl tracking-wide">Cliff Bait</div>
         </Link>
-        <Menu />
+        {/* <Menu /> */}
       </div>
       {/* Bigger Screens */}
       <div className="hidden md:flex items-center h-full justify-between gap-8">
@@ -23,17 +23,16 @@ const NavBar = () => {
             <div className="text-2xl tracking-wide">Cliff Bait</div>
           </Link>
           <div className="hidden xl:flex gap-4">
-            <Link href="/">Home</Link>
-            <Link href="/shop">Shop</Link>
+            {/* <Link href="/shop">Shop</Link>
             <Link href="/deals">Deals</Link>
             <Link href="/about">About</Link>
-            <Link href="/contact">Contact</Link>
+            <Link href="/contact">Contact</Link> */}
           </div>
         </div>
         {/* RIGHT */}
         <div className="w-2/3 xl:w-1/2 flex items-center justify-between gap-8">
           <SearchBar />
-          <NavIconsWrapper />
+          {/* <NavIconsWrapper /> */}
         </div>
       </div>
     </div>

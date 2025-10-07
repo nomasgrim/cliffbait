@@ -26,12 +26,12 @@ const Footer = () => {
             Lake Placid, FL
           </p>
           <span className="font-semibold">thedude@cliffbait.com</span>
-          <div className="flex gap-6">
+          {/* <div className="flex gap-6">
             <Image src="/facebook.png" alt="facebook" width={16} height={16} />
             <Image src="/instagram.png" alt="instagram" width={16} height={16} />
             <Image src="/youtube.png" alt="youtube" width={16} height={16} />
             <Image src="/x.png" alt="x" width={16} height={16} />
-          </div>
+          </div> */}
         </div>
         {/* CENTER */}
         <div className="hidden lg:flex justify-between w-1/2">
@@ -39,21 +39,23 @@ const Footer = () => {
             <h1 className="font-medium text-lg">Company</h1>
             <div className="flex flex-col gap-6">
               <Link href="/">Home</Link>
-              <Link href="/">Shop</Link>
+              {/* <Link href="/">Shop</Link>
               <Link href="/">Deals</Link>
               <Link href="/">About</Link>
-              <Link href="/">Contact</Link>
+              <Link href="/">Contact</Link> */}
             </div>
           </div>
+
           <div className="flex flex-col gap-12">
             <h1 className="font-medium text-lg">Shop</h1>
             <div className="flex flex-col gap-6">
-              <Link href="/list?cat=featured">Featured</Link>
-              <Link href="/list?cat=worms">Worms</Link>
+              {/* <Link href="/list?cat=featured">Featured</Link>
+              <Link href="/list?cat=worms">Worms</Link> */}
               <Link href="/list">All Products</Link>
             </div>
           </div>
-          <div className="flex flex-col gap-12">
+          
+          {/* <div className="flex flex-col gap-12">
             <h1 className="font-medium text-lg">Help</h1>
             <div className="flex flex-col gap-6">
               <Link href="/customercare">Customer Service</Link>
@@ -61,11 +63,11 @@ const Footer = () => {
               <Link href="/legal">Legal & Privacy</Link>
               <Link href="/gift">Gift</Link>
             </div>
-          </div>
+          </div> */}
         </div>
         {/* RIGHT */}
         <div className="w-full md:w-1/2 lg:w-1/4 flex flex-col gap-8">
-          <h1 className="font-medium text-lg">Subscribe</h1>
+          {/* <h1 className="font-medium text-lg">Subscribe</h1>
           <p>Be the first to get the latest news about trends, promotions, and much more!</p>
           <div className="flex">
             <input 
@@ -75,7 +77,7 @@ const Footer = () => {
               data-lpignore
             />
             <button className="w-1/4 bg-primary text-white">JOIN</button>
-          </div>
+          </div> */}
           <span className="font-semibold">Secure Payments</span>
           <div className="flex justify-between">
             <Image src="/discover.png" alt="discover" width={40} height={20} />

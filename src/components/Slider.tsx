@@ -7,36 +7,38 @@ import { useEffect, useState } from "react";
 const slides = [
   {
     id: 1,
-    title: "Cliffords Big Red Worm",
-    description: "Its like Click Bait, but Cliff Bait, the difference are the f's. Its for fish",
+    title: "Cliff Bait",
+    description: "Caution, they to jump.",
+    subTitle: "Pardon the mess, site is under construction. Contact thedude@cliffbait.com with any questions",
     img: "https://images.pexels.com/photos/33668051/pexels-photo-33668051.jpeg",
     url: "/",
     bg: "bg-gradient-to-r from-yellow-50 to-pink-50"
-  },
-  {
-    id: 2,
-    title: "Lake Placid Charters Company",
-    description: "Fanning at a lake near you",
-    img: "https://images.pexels.com/photos/33870392/pexels-photo-33870392.jpeg",
-    url: "/",
-    bg: "bg-gradient-to-r from-pink-50 to-blue-50"
-  },
-  {
-    id: 3,
-    title: "Bass Addict Tackle",
-    description: "Satisfy the entire families vices in one family friendly cafe. While you browse some of our favorites baits, the wife and kids can enjoy taking their sweet time discovering discovering whihch way they will satisfy their pallets with our thirst quenching, caffeine fitting, refreshing sequence of beverages",
-    img: "https://images.pexels.com/photos/25551716/pexels-photo-25551716.jpeg",
-    url: "/",
-    bg: "bg-gradient-to-r from-blue-50 to-green-50"
-  },
-  {
-    id: 4,
-    title: "Big Water Bait and Tackle",
-    description: "In a small water hole of Lakeport, you'll find the wildest of wild shiners this side of the mississippi",
-    img: "https://images.pexels.com/photos/31009117/pexels-photo-31009117.jpeg",
-    url: "/",
-    bg: "bg-gradient-to-r from-blue-50 to-green-50"
-  },
+  }
+  // },
+  // {
+  //   id: 2,
+  //   title: "Lake Placid Charters Company",
+  //   description: "Central Florida Air boat adventures",
+  //   img: "https://images.pexels.com/photos/33870392/pexels-photo-33870392.jpeg",
+  //   url: "/",
+  //   bg: "bg-gradient-to-r from-pink-50 to-blue-50"
+  // },
+  // {
+  //   id: 3,
+  //   title: "Bass Addict Tackle",
+  //   description: "One stop shop. Get your bait and morning beverage.",
+  //   img: "https://images.pexels.com/photos/25551716/pexels-photo-25551716.jpeg",
+  //   url: "/",
+  //   bg: "bg-gradient-to-r from-blue-50 to-green-50"
+  // },
+  // {
+  //   id: 4,
+  //   title: "Big Water Bait and Tackle",
+  //   description: "The wildest of wild shiners this side of the mississippi",
+  //   img: "https://images.pexels.com/photos/31009117/pexels-photo-31009117.jpeg",
+  //   url: "/",
+  //   bg: "bg-gradient-to-r from-blue-50 to-green-50"
+  // },
 ]
 
 const Slider = () => {
@@ -69,6 +71,11 @@ const Slider = () => {
                 <h1 className="text-5xl lg:text-6xl xl:text-8xl font-semibold">
                   {slide.title}
                 </h1>
+                {slide.subTitle && (
+                  <p>
+                    {slide.subTitle}
+                  </p>
+                )}
                 {/* BUTTON/LINK */}
                 <Link href={slide.url}>
                   <button className="rounded bg-black text-white py-3 px-4">View More</button>
@@ -89,7 +96,8 @@ const Slider = () => {
           ))
         }
       </div>
-      <div className="absolute m-auto left-1/2 bottom-8 flex gap-4">
+      {/* slider pagination */}
+      {/* <div className="absolute m-auto left-1/2 bottom-8 flex gap-4">
         {
           slides.map((slide,index)=>(
             <div 
@@ -104,7 +112,7 @@ const Slider = () => {
             </div>
           ))
         }
-      </div>
+      </div> */}
     </div>
   )
 };
