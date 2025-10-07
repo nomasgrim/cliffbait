@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Analytics } from '@vercel/analytics/next';
 
 import "./globals.css";
 import Footer from "@/components/Footer";
@@ -25,6 +26,7 @@ export default function RootLayout({
           <NavBar />
           {children}
           <Footer />
+          <Analytics />
         </WixClintContextProvider>
       </body>
     </html>
