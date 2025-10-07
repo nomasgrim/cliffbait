@@ -8,9 +8,9 @@ const slides = [
   {
     id: 1,
     title: "Cliff Bait",
-    description: "Caution, they to jump.",
+    description: "Luring fish to the edge",
     subTitle: "Pardon the mess, site is under construction. Contact thedude@cliffbait.com with any questions",
-    img: "https://images.pexels.com/photos/33668051/pexels-photo-33668051.jpeg",
+    img: "https://assets.codepen.io/125304/lake-june-canal.jpg",
     url: "/",
     bg: "bg-gradient-to-r from-yellow-50 to-pink-50"
   }
@@ -77,9 +77,9 @@ const Slider = () => {
                   </p>
                 )}
                 {/* BUTTON/LINK */}
-                <Link href={slide.url}>
+                {/* <Link href={slide.url}>
                   <button className="rounded bg-black text-white py-3 px-4">View More</button>
-                </Link>
+                </Link> */}
                 <div className=""></div>
               </div>
               {/* Image Container */}

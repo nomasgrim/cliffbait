@@ -11,6 +11,7 @@
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
     "@wix/crm": "^1.0.1061",
+    "@wix/data": "^1.0.303",
     "@wix/ecom": "^1.0.1411",
     "@wix/members": "^1.0.330",
     "@wix/redirects": "^1.0.97",
