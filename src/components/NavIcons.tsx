@@ -54,7 +54,7 @@ const NavIcons = () => {
 
   return (
     <div className="flex items-center gap-4 xl:gap-6 relative">
-      <Image
+      {/* <Image
         src="/profile.png"
         alt=""
         width={22}
@@ -70,7 +70,7 @@ const NavIcons = () => {
             {isLoading ? "Logging out" : "Logout"}
           </div>
         </div>
-      )}
+      )} */}
       <Image
         src="/notification.png"
         alt=""
