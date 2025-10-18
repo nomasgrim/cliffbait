@@ -3,6 +3,7 @@ import CustomizeProducts from "@/components/CustomizeProducts";
 import ProductImages from "@/components/ProductImages";
 import { wixClientServer } from "@/lib/wixClientServer";
 import { notFound } from "next/navigation";
+import DOMPurify from "isomorphic-dompurify";
 
 const SinglePage = async ({
   params
@@ -31,9 +32,10 @@ const SinglePage = async ({
         <h1 className="text:4xl font-medium">
           {product.name}
         </h1>
-        <p className="text-gray-500">
-          {product.description}
-        </p>
+        <p className="text-gray-500" dangerouslySetInnerHTML={{__html:DOMPurify.sanitize(
+          product.description || ""
+          )}} 
+        />
         <div className="h-[2px] bg-gray-100" />
         <div className="flex items-center gap-4">
         {/* PRICE */}
@@ -67,7 +69,11 @@ const SinglePage = async ({
         {product.additionalInfoSections && product.additionalInfoSections.map((section:any, index:number) => (
           <div className="text-sm" key={index}>
             <h4 className="font-medium mb-4">{section.title}</h4>
-            <p>{section.description}</p>
+            <p 
+              dangerouslySetInnerHTML={{__html:DOMPurify.sanitize(
+                section.description
+              )}} 
+            />
           </div>
         ))} 
       </div>
