@@ -6,13 +6,13 @@ import NavIconsWrapper from "./NavIconsWrapper";
 
 const NavBar = () => {
   return (
-    <div className="h-20 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative">
+    <header className="h-20 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 fixed inset-x-0 top-0 left-0  md:relative z-50 bg-white">
       {/* MOBILE */}
       <div className="h-full flex items-center justify-between md:hidden">
         <Link href="/">
           <div className="text-2xl tracking-wide">Cliff Bait</div>
         </Link>
-        {/* <Menu /> */}
+        <Menu />
       </div>
       {/* Bigger Screens */}
       <div className="hidden md:flex items-center h-full justify-between gap-8">
@@ -35,7 +35,7 @@ const NavBar = () => {
           <NavIconsWrapper />
         </div>
       </div>
-    </div>
+    </header>
   )
 };
 

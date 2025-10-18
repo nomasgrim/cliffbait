@@ -48,10 +48,6 @@ const CustomizeProducts = ({
     })
   }
 
-  console.log('selected options', selectedOptions);
-  console.log('variants', variants);
-  // console.log('isVariant in stock', isVariantInStock);
-
   return (
     <div className="flex flex-col gap-6">
       {productOptions.map(option=>(
