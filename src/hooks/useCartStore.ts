@@ -3,7 +3,7 @@ import { currentCart } from "@wix/ecom";
 import { TWixClient } from "@/context/wixContext";
 
 type CartState = {
-  cart: currentCart.Cart;
+  cart: any;
   isLoading: boolean;
   counter: number;
   getCart: (wixClient: TWixClient) => void;
@@ -19,6 +19,7 @@ type CartState = {
 export const useCartStore = create<CartState>((set) => ({
   cart: {
     lineItems:[],
+    subtotal: 0
   },
   isLoading: true,
   counter: 0,

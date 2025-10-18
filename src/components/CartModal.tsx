@@ -45,7 +45,6 @@ const CartModal = () => {
   useEffect(()=>{
     setOrigin(window.location.origin);
   },[])
-  console.log("cart", cart);
 
   return (
     <div 
@@ -60,7 +59,7 @@ const CartModal = () => {
             <h2 className="text-xl">Shopping Cart</h2>
             {/* // LIST */}
             <div className="flex flex-col gap-8">
-              {cart && cart?.lineItems.map((cartItem)=>{
+              {cart && cart?.lineItems.map((cartItem:any)=>{
                 return(
                   <div className="w-max flex gap-4" key={cartItem._id}>
                     {cartItem.image && (<Image 
@@ -114,15 +113,14 @@ const CartModal = () => {
             <div className="">
               <div className="flex items-center justify-between font-semibold">
                 <span className="">Sub Total</span>
-                <span className="">0</span>
+                {/* <span className="">0</span> */}
                 {/* TODO: SUBTOTAL */}
-                {/* <span className="">{cart.subtotal.amount}</span> */}
+                <span className="">${cart.subtotal.amount || 0}</span>
               </div>
               <p className="text-gray-500 text-sm mt-2 mb-4">
                 Shipping and taxes calculated at checkout
               </p>
-              <div className="flex items-center justify-between text-sm">
-                <button className="rounded-md py-3 px-4 ring-1 ring-gray-300">View Cart</button>
+              <div className="flex items-center justify-end text-sm">
                 <button 
                   className="rounded-md py-3 px-4 bg-black text-white disabled:cursor-not-allowed disabled:opactiy-75" 
                   disabled={isLoading}

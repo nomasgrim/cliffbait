@@ -3,21 +3,30 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-const slides = [
+interface ISlide {
+  id: number,
+  title: string,
+  buttonText?: string,
+  description: string,
+  img: string,
+  url: string,
+  bg: string
+}
+const slides:ISlide[] = [
   {
     id: 1,
     title: "Cliff Bait",
     description: "Luring fish to the edge",
-    subTitle: "Pardon the mess, site is under construction. Contact thedude@cliffbait.com with any questions",
+    buttonText: "Browse Shop",
     img: "https://assets.codepen.io/125304/lake-june-canal.jpg",
-    url: "/",
+    url: "/list?cat=all-products",
     bg: "bg-gradient-to-r from-yellow-50 to-pink-50"
   }
   // },
   // {
   //   id: 2,
   //   title: "Lake Placid Charters Company",
+  //   subtitle: "some subtitle"
   //   description: "Central Florida Air boat adventures",
   //   img: "https://images.pexels.com/photos/33870392/pexels-photo-33870392.jpeg",
   //   url: "/",
@@ -71,15 +80,10 @@ const Slider = () => {
                 <h1 className="text-5xl lg:text-6xl xl:text-8xl font-semibold">
                   {slide.title}
                 </h1>
-                {slide.subTitle && (
-                  <p>
-                    {slide.subTitle}
-                  </p>
-                )}
                 {/* BUTTON/LINK */}
-                {/* <Link href={slide.url}>
-                  <button className="rounded bg-black text-white py-3 px-4">View More</button>
-                </Link> */}
+                <Link href={slide.url}>
+                  <button className="rounded bg-black text-white py-3 px-4">{slide.buttonText}</button>
+                </Link>
                 <div className=""></div>
               </div>
               {/* Image Container */}

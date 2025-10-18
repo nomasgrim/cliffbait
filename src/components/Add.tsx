@@ -2,7 +2,7 @@
 
 import { useCartStore } from "@/hooks/useCartStore";
 import { useWixClient } from "@/hooks/useWixClient";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface IAdd {
   productId: string;
@@ -19,7 +19,7 @@ const Add = ({
   const [quantity, setQuantity] = useState(1);
 
 
-  const handleQuantity = (type: "minus" | "plus") => {
+  const handleQuantity = (type: "minus" | "plus" | "total") => {
     if(type==="minus" && quantity > 1 )
       setQuantity(prev=>prev-1)
     if(type==="plus" && quantity < stockNumber)

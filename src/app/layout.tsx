@@ -24,7 +24,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <WixClintContextProvider>
           <NavBar />
-          {children}
+          <div className="pt-[80px] md:pt-0">
+            {children}
+          </div>
           <Footer />
           <Analytics />
         </WixClintContextProvider>

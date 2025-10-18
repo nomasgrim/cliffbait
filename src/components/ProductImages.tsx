@@ -28,7 +28,6 @@ interface IProductImages {
 
 const ProductImages = ({media}:IProductImages) => {
   const [index, setIndex] = useState(0);
-  console.log('media', media);
   return (
     <div className="">
       <div className="h-[500px] relative">
