@@ -54,8 +54,8 @@ const Menu = () => {
       </div>
       {open && counter > 0 && (
         <div 
-          className="absolute left-0 top-20 w-full 
-            h-[calc(100vh-80px)] flex flex-col items-center justify-center gap-8 text-xl z-10"
+          className="bg-black absolute left-0 top-20 w-full 
+            h-[calc(100vh-60px)] flex flex-col items-center justify-center text-xl z-10"
         >
           {/* <Link href="/">Home</Link>
           <Link href="/shop">Shop</Link>
@@ -64,7 +64,7 @@ const Menu = () => {
           <Link href="/contact">Contact</Link>
           <Link href="/">Logout</Link>
           <Link href="/">Cart(1)</Link> */}
-          <CartModal />
+          <div className="w-full overflow-y-scroll scrollbar-hide"><CartModal /></div>
         </div>
       )}
     </div>

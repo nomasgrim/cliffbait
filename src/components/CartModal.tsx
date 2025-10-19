@@ -48,7 +48,7 @@ const CartModal = () => {
 
   return (
     <div 
-      className="md:absolute w-full md:w-auto p-4 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-white top-12 right-0 flex flex-col gap-6 z-20"
+      className="md:absolute w-auto p-4 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-white top-12 right-0 flex flex-col gap-6 z-20"
     >
       {!cart.lineItems ? 
         // CART EMPTY
@@ -61,7 +61,7 @@ const CartModal = () => {
             <div className="flex flex-col gap-8">
               {cart && cart?.lineItems.map((cartItem:any)=>{
                 return(
-                  <div className="w-max flex gap-4" key={cartItem._id}>
+                  <div className="w-auto md:w-max flex gap-4" key={cartItem._id}>
                     {cartItem.image && (<Image 
                       src={wixMedia.getScaledToFillImageUrl(cartItem.image, 72, 96,{})}
                       alt="product" 
