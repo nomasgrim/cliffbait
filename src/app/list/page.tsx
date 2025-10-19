@@ -27,8 +27,10 @@ const ListPage = async ({
           <Image src="/woman.png" alt="" fill className="object-contain" />
         </div>
       </div> */}
-      {/* filter */}
-      <Filter />
+      
+      {/* FILTER */}
+      {/* <Filter /> */}
+
       {/* product list */}
       <h1 className="mt-12 text-xl font-semibold">{category.collection?.name} For You!</h1>
       <Suspense fallback={"loading"}>
