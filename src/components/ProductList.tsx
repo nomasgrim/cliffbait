@@ -37,7 +37,6 @@ const ProductList = async ({
   if(searchParams?.sort) {
     const [sortType, sortBy] = searchParams?.sort.split(" ");
     if(sortType === "asc") {
-      console.log('sortBy', sortBy);
       productQuery = productQuery.ascending(sortBy)
     }
     if(sortType === "desc") {
@@ -47,8 +46,6 @@ const ProductList = async ({
 
   // define and execute productQuery
   const listOfProducts = await productQuery.find();
-  console.log(listOfProducts);
-
   // if(!listOfProducts) return notFound();
 
   return (

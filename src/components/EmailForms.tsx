@@ -11,7 +11,6 @@ const EmailForm = ({submitForm}:any) => {
   const handleSubmitEmail = async (e:React.FormEvent) => {
     // SDK does not have way to collect email and subscribe
     // need to setup API insteadd of SDK
-    console.log('entered', email);
   }
 
   useEffect(()=>{
