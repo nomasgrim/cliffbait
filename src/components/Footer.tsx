@@ -22,10 +22,11 @@ const Footer = () => {
           <Link href="/">
             <div className="text-2xl tracking-wide">Cliff Bait</div>
           </Link>
-          <p>
+          <span className="font-semibold">
             Lake Placid, FL
-          </p>
-          <span className="font-semibold">thedude@cliffbait.com</span>
+          </span>
+          <a className="font-semibold" href="mailto:thedude@cliffbait.com">thedude@cliffbait.com</a>
+          <a href="tel:+18632124716" className="font-semibold">(863) 212 - 4716</a><span ></span>
           {/* <div className="flex gap-6">
             <Image src="/facebook.png" alt="facebook" width={16} height={16} />
             <Image src="/instagram.png" alt="instagram" width={16} height={16} />
