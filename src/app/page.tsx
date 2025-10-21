@@ -1,29 +1,9 @@
-// "use client";
-
 import CategoryList from "@/components/CategoryList"
 import ProductList from "@/components/ProductList"
 import Slider from "@/components/Slider"
 import { Suspense, useEffect } from "react"
-import { useWixClient } from "@/hooks/useWixClient";
-import { wixClientServer } from "@/lib/wixClientServer";
 
 const HomePage = async () => { 
-  // Client side render Wix DB
-  // const wixClient = useWixClient();
-  // useEffect(()=>{
-  //   const getProduct = async() => {
-  //     const res = await wixClient.products.queryProducts().find();
-  //     console.log('res', res);
-  //     return res;
-  //   }
-    
-  //   getProduct();
-  // }, [wixClient])
-
-  // Server side render Wix DB
-  // const wixClient = await wixClientServer();
-  // const res = await wixClient.products.queryProducts().find();
-  // console.log('cliff res', res);
 
   return (
     <>

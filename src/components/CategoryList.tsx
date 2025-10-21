@@ -6,8 +6,6 @@ import Link from "next/link";
 const CategoryList = async () => {
   const wixClient = await wixClientServer();
   const categories = await wixClient.collections.queryCollections().find();
-
-  console.log("categories", categories);
   return (
     <div className="px-4 overflow-x-scroll scrollbar-hide">
       <div className="flex gap-4 md:gap-8">

@@ -16,8 +16,6 @@ const OrderPage = async ({params}:any) => {
     return notFound();
   }
 
-  console.log('retrieved order', order);
-
   return (
     <div className="flex flex-col h-[calc(100vh-180px)] items-center justify-center">
       <h1 className="text-3xl">Order Details</h1>

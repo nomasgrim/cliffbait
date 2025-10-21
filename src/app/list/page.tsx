@@ -1,14 +1,11 @@
-import Filter from "@/components/Filter";
 import ProductList from "@/components/ProductList";
 import { wixClientServer } from "@/lib/wixClientServer";
-import Image from "next/image";
 import { Suspense } from "react";
 
 const ListPage = async ({
   searchParams
 }:any) => {
   const pageParams = await searchParams;
-  console.log('page params', pageParams);
   const wixClient = await wixClientServer();
   const category = await wixClient.collections.getCollectionBySlug(pageParams?.cat || "all-products");
   

@@ -18,9 +18,7 @@ const CartModal = () => {
     try {
       const checkoutResponse = await wixClient.currentCart.createCheckoutFromCurrentCart({
         channelType: currentCart.ChannelType.WEB,
-      });
-      console.log('checkoutResponse', checkoutResponse);
-      
+      });      
       const options = {
         ecomCheckout:{
           checkoutId: checkoutResponse.checkoutId
@@ -40,7 +38,6 @@ const CartModal = () => {
 
     }
   }
-
 
   useEffect(()=>{
     setOrigin(window.location.origin);
