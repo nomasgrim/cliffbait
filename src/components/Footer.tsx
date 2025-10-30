@@ -25,8 +25,7 @@ const Footer = () => {
           <span className="font-semibold">
             Lake Placid, FL
           </span>
-          <a className="font-semibold" href="mailto:thedude@cliffbait.com">thedude@cliffbait.com</a>
-          <a href="tel:+18632124716" className="font-semibold">(863) 212 - 4716</a><span ></span>
+          <a className="font-semibold" href="mailto:thedude@cliffbait.com">thedude@cliffbait.com</a>      
           {/* <div className="flex gap-6">
             <Image src="/facebook.png" alt="facebook" width={16} height={16} />
             <Image src="/instagram.png" alt="instagram" width={16} height={16} />
