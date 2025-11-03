@@ -7,7 +7,7 @@ interface ISlide {
   id: number,
   title: string,
   buttonText?: string,
-  description: string,
+  description?: string,
   img: string,
   url: string,
   bg: string
@@ -15,8 +15,7 @@ interface ISlide {
 const slides:ISlide[] = [
   {
     id: 1,
-    title: "Cliff Bait",
-    description: "Luring fish to the edge",
+    title: "Gotcha BASS!",
     buttonText: "Browse Shop",
     img: "https://assets.codepen.io/125304/lake-june-canal.jpg",
     url: "/list?cat=all-products",
@@ -74,9 +73,11 @@ const Slider = () => {
             <div className={`${slide.bg} w-screen h-full flex flex-col gap-16 xl:flex-row`} key={slide.id}>
               {/* Text Container */}
               <div className="h-1/2 xl:h-full xl:w-1/2 flex flex-col items-center justify-center gap-8 2xl:gap-12 text-center">
-                <h2 className="text-xl lg:text-3xl xl:text-5xl">
-                  {slide.description}
-                </h2>
+                {slide.description && (
+                  <h2 className="text-xl lg:text-3xl xl:text-5xl">
+                    {slide.description}
+                  </h2>
+                )}
                 <h1 className="text-5xl lg:text-6xl xl:text-8xl font-semibold">
                   {slide.title}
                 </h1>
