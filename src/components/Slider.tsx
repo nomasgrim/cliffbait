@@ -16,6 +16,7 @@ const slides:ISlide[] = [
   {
     id: 1,
     title: "Gotcha BASS!",
+    description: "While you're here, snoop around",
     buttonText: "Browse Shop",
     img: "https://assets.codepen.io/125304/lake-june-canal.jpg",
     url: "/list?cat=all-products",
