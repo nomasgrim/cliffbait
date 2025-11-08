@@ -9,7 +9,7 @@ const GenerateQrCode = () => {
     width: 350,
     height: 350,
     type: 'svg',
-    data: 'http://www.cliffbat.com/custom-qr/?phrase=welcome to cliff bait',
+    data: 'http://www.cliffbait.com/custom-qr/?phrase=welcome to cliff bait',
     image: 'https://www.cliffbait.com/home.png',
     margin: 10,
     qrOptions: {
