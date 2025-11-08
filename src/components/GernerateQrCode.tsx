@@ -1,10 +1,11 @@
-"use client"
+"use client";
+
 import React, { useEffect, useRef, useState, ChangeEvent } from "react";
-import QRCodeStyling, { Options, FileExtension } from "qr-code-styling";
+import QRCodeStyling, { FileExtension } from "qr-code-styling";
 
 const GenerateQrCode = () => {
   const [selectedFile, setSelectedFile] = useState();
-  const [options, setOptions] = useState<Options>({
+  const [options, setOptions] = useState<any>({
     width: 350,
     height: 350,
     type: 'svg',
@@ -30,14 +31,14 @@ const GenerateQrCode = () => {
       color: '#fff',
     },
   });
-  const [fileExt, setFileExt] = useState<FileExtension>("none");
+  const [fileExt, setFileExt] = useState<FileExtension>("svg");
   const [qrCode, setQrCode] = useState<QRCodeStyling>();
   const ref = useRef<HTMLDivElement>(null);
   const [phrase, setPhrase] = useState<string>("Enter your message!");
 
   useEffect(() => {
     setQrCode(new QRCodeStyling(options));
-  }, [])
+  }, [options])
 
   useEffect(() => {
     if (ref.current) {
@@ -52,7 +53,7 @@ const GenerateQrCode = () => {
 
   const onDataChange = (event: ChangeEvent<HTMLInputElement>) => {
     setPhrase(event.target.value);
-    setOptions(options => ({
+    setOptions((options:any) => ({
       ...options,
       data: `https://www.cliffbait.com/custom-qr/?phrase=${phrase}`
     }));
@@ -76,7 +77,7 @@ const GenerateQrCode = () => {
     }
     const objectUrl = URL.createObjectURL(selectedFile)
 
-    setOptions(options => ({
+    setOptions((options:any) => ({
       ...options,
       image: objectUrl
     }));
@@ -108,12 +109,14 @@ const GenerateQrCode = () => {
             onChange={onSelectFile} 
             className="ring-2 ring-gray-300 rounded-md p-4 w-[300px] mb-6"
           />
+          <p>
+            Select Extension to download as
+          </p>
           <select 
             onChange={onExtensionChange} 
             value={fileExt}
             className="p-4 rounded-2xl text-xs font-medium bg-gray-200 w-[300px] mb-6"
           >
-            <option value="none">Select Extension to download as</option>
             <option value="svg">SVG</option>
             <option value="png">PNG</option>
             <option value="jpeg">JPEG</option>

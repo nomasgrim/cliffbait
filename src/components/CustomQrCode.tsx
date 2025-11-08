@@ -1,9 +1,9 @@
 "use-client";
 
 const CustomQrCode = ({
-  pageParams
+  parameters
 }:any) => {
-  const phrase = pageParams?.phrase;
+  const phrase = parameters?.phrase;
   return (
     <div className="">
       <h1 className="text-6xl">{phrase}</h1>
