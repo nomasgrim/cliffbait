@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { GoogleTagManager } from '@next/third-parties/google';
 import { Analytics } from '@vercel/analytics/next';
 
 import "./globals.css";
@@ -29,6 +30,7 @@ export default function RootLayout({
           </div>
           <Footer />
           <Analytics />
+          <GoogleTagManager gtmId="G-RWF6QJ8RVQ" />
         </WixClintContextProvider>
       </body>
     </html>
