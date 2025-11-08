@@ -34,7 +34,7 @@ const GenerateQrCode = () => {
   const [fileExt, setFileExt] = useState<FileExtension>("svg");
   const [qrCode, setQrCode] = useState<QRCodeStyling>();
   const ref = useRef<HTMLDivElement>(null);
-  const [phrase, setPhrase] = useState<string>("Enter your message!");
+  const [phrase, setPhrase] = useState<string>("");
 
   useEffect(() => {
     setQrCode(new QRCodeStyling(options));
@@ -100,7 +100,8 @@ const GenerateQrCode = () => {
         <h2 className="mt-12 text-xl font-semibold">Create a qr code with a secret message!</h2>
         <div className="flex flex-col mt-[20px]">
           <input 
-            value={phrase} 
+            placeholder="Enter your message!"
+            value={phrase}
             onChange={onDataChange} 
             className="ring-2 ring-gray-300 rounded-md p-4 w-[300px] mb-6"
           />
