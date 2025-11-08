@@ -105,6 +105,7 @@ const GenerateQrCode = () => {
             onChange={onDataChange} 
             className="ring-2 ring-gray-300 rounded-md p-4 w-[300px] mb-6"
           />
+          <p className="text-xs">optional, add personal logo</p>
           <input 
             type='file' 
             onChange={onSelectFile} 
@@ -129,15 +130,21 @@ const GenerateQrCode = () => {
               py-2 pyx-4 
               hover:bg-primary hover:text-white 
               disabled:cursor-not-allowed disabled:bg-pink-200 disabled:text-color-white disabled:ring-none
-              disabled:ring-0"
+              disabled:ring-0 mb-6"
             onClick={onDownloadClick}
           >
             Download
           </button>
+          <p className="text-xs md:hidden">
+            Mobile devices will need to screenshot, and use the qr code from their camera roll
+          </p>
         </div>
       </div>
       <div className="qr-image">
         <div ref={ref}/>
+        <p className="text-sm hidden md:flex">
+          Use your mobile device to actively scan the qr code as it updates.
+        </p>
       </div>
     </div>
   );
