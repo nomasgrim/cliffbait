@@ -1,7 +1,7 @@
 import CategoryList from "@/components/CategoryList"
 import ProductList from "@/components/ProductList"
 import Slider from "@/components/Slider"
-import { Suspense, useEffect } from "react"
+import { Suspense } from "react"
 
 const HomePage = async () => { 
 
