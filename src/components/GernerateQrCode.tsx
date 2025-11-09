@@ -52,12 +52,16 @@ const GenerateQrCode = () => {
   }, [qrCode, options]);
 
   const onDataChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setPhrase(event.target.value);
+    const newValue = event.target.value;
+    setPhrase(newValue);
+  };
+
+  useEffect(()=>{
     setOptions((options:any) => ({
       ...options,
       data: `https://www.cliffbait.com/custom-qr/?phrase=${phrase}`
     }));
-  };
+  },[phrase]);
 
   const onExtensionChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setFileExt(event.target.value as FileExtension);
@@ -111,13 +115,13 @@ const GenerateQrCode = () => {
             onChange={onSelectFile} 
             className="ring-2 ring-gray-300 rounded-md p-4 w-[300px] mb-6"
           />
-          <p>
+          <p className="hidden md:flex">
             Select Extension to download as
           </p>
           <select 
             onChange={onExtensionChange} 
             value={fileExt}
-            className="p-4 rounded-2xl text-xs font-medium bg-gray-200 w-[300px] mb-6"
+            className="hidden md:flex p-4 rounded-2xl text-xs font-medium bg-gray-200 w-[300px] mb-6"
           >
             <option value="svg">SVG</option>
             <option value="png">PNG</option>
@@ -130,20 +134,24 @@ const GenerateQrCode = () => {
               py-2 pyx-4 
               hover:bg-primary hover:text-white 
               disabled:cursor-not-allowed disabled:bg-pink-200 disabled:text-color-white disabled:ring-none
-              disabled:ring-0 mb-6"
+              disabled:ring-0 mb-6
+              hidden md:flex"
             onClick={onDownloadClick}
           >
             Download
           </button>
-          <p className="text-xs md:hidden">
-            Mobile devices will need to screenshot, and use the qr code from their camera roll
-          </p>
         </div>
       </div>
       <div className="qr-image">
+        <p className="text-sm">
+          The QR may disappear for a moment while it's generating
+        </p>
         <div ref={ref}/>
         <p className="text-sm hidden md:flex">
           Use your mobile device to actively scan the qr code as it updates.
+        </p>
+        <p className="text-xs md:hidden">
+          Mobile devices will need to screenshot, and use the qr code from their camera roll
         </p>
       </div>
     </div>
