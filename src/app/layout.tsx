@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { GoogleTagManager } from '@next/third-parties/google';
+import { WixClintContextProvider } from "@/context/wixContext";
 import { Analytics } from '@vercel/analytics/next';
 
-import "./globals.css";
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
-import { WixClintContextProvider } from "@/context/wixContext";
+
+import "./globals.css";
+import AnalyticsProvider from "@/analytics/AnalyticsProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,13 +25,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <WixClintContextProvider>
-          <NavBar />
-          <div className="pt-[80px] md:pt-0">
-            {children}
-          </div>
-          <Footer />
-          <Analytics />
-          <GoogleTagManager gtmId="G-RWF6QJ8RVQ" />
+          <AnalyticsProvider>
+            <NavBar />
+            <div className="pt-[80px] md:pt-0">
+              {children}
+            </div>
+            <Footer />
+            <Analytics />
+          </AnalyticsProvider>
         </WixClintContextProvider>
       </body>
     </html>
