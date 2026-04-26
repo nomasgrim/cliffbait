@@ -47,7 +47,7 @@ const Menu = () => {
         className="relative cursor-pointer"
         onClick={() => toggleIfCart()}
       >
-        <Image src="/cart.png" alt="" width={22} height={22} />
+        <Image src="/cart.png" alt="cliff bait | shopping cart" width={22} height={22} />
         <div className="absolute -top-4 -right-4 w-6 h-6 bg-primary rounded-full text-white text-sm flex items-center justify-center">
           {counter}
         </div>

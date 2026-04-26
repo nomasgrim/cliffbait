@@ -46,6 +46,7 @@ const ProductList = async ({
 
   // define and execute productQuery
   const listOfProducts = await productQuery.find();
+  console.log('product.media.items', listOfProducts.items);
   // if(!listOfProducts) return notFound();
 
   return (
@@ -61,7 +62,7 @@ const ProductList = async ({
           <div className="relative w-full h-80">
             <Image 
               src={product.media?.mainMedia?.image?.url || "/product.png"}
-              alt="" 
+              alt={product.name || ""}
               fill 
               sizes="25vw"
               className="absolute object-cover rounded-md z-10 hover:opacity-0 transition-opacity easy duration-500"
@@ -69,7 +70,7 @@ const ProductList = async ({
             {product.media?.items && (
               <Image 
                 src={product.media?.items[1]?.image?.url || "/product.png"}
-                alt="" 
+                alt={product.name || ""}
                 fill 
                 sizes="25vw"
                 className="absolute object-cover rounded-md" 

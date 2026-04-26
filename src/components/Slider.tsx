@@ -10,7 +10,8 @@ interface ISlide {
   description?: string,
   img: string,
   url: string,
-  bg: string
+  bg: string,
+  alt: string
 }
 const slides:ISlide[] = [
   {
@@ -19,6 +20,7 @@ const slides:ISlide[] = [
     description: "While you're here, snoop around",
     buttonText: "Browse Shop",
     img: "https://assets.codepen.io/125304/lake-june-canal.jpg",
+    alt: "Cliff Bait | Artificial Bass Lures",
     url: "/list?cat=all-products",
     bg: "bg-gradient-to-r from-yellow-50 to-pink-50"
   }
