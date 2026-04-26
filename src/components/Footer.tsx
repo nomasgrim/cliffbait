@@ -81,10 +81,10 @@ const Footer = () => {
           <span className="font-semibold">Secure Payments</span>
           <div className="flex justify-between">
             <Image src="/discover.png" alt="discover" width={40} height={20} />
-            <Image src="/skrill.png" alt="discover" width={40} height={20} />
-            <Image src="/paypal.png" alt="discover" width={40} height={20} />
-            <Image src="/mastercard.png" alt="discover" width={40} height={20} />
-            <Image src="/visa.png" alt="discover" width={40} height={20} />
+            <Image src="/skrill.png" alt="skrill" width={40} height={20} />
+            <Image src="/paypal.png" alt="paypal" width={40} height={20} />
+            <Image src="/mastercard.png" alt="master card" width={40} height={20} />
+            <Image src="/visa.png" alt="visa" width={40} height={20} />
           </div>
         </div>
       </div>

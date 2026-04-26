@@ -24,16 +24,17 @@ import { useState } from "react";
 
 interface IProductImages {
   media: any;
+  productName: string;
 }
 
-const ProductImages = ({media}:IProductImages) => {
+const ProductImages = ({media, productName}:IProductImages) => {
   const [index, setIndex] = useState(0);
   return (
     <div className="">
       <div className="h-[500px] relative">
         <Image
           src={media[index].image.url}
-          alt="big image"
+          alt={`${productName} | large view`}
           fill
           sizes="50vw"
           className="object-cover rounded-md"
@@ -49,7 +50,7 @@ const ProductImages = ({media}:IProductImages) => {
             >
               <Image
                 src={item.image.url}
-                alt="preview image"
+                alt={`${productName} | preview image`}
                 fill
                 sizes="30vw"
                 className="object-cover rounded-md"

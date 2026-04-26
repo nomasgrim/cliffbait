@@ -61,7 +61,7 @@ const CartModal = () => {
                   <div className="w-auto md:w-max flex gap-4" key={cartItem._id}>
                     {cartItem.image && (<Image 
                       src={wixMedia.getScaledToFillImageUrl(cartItem.image, 72, 96,{})}
-                      alt="product" 
+                      alt="cliff bait | shopping cart" 
                       width={72} 
                       height={96} 
                       className="object-cover rounded-md" 
