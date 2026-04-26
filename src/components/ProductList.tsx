@@ -46,7 +46,6 @@ const ProductList = async ({
 
   // define and execute productQuery
   const listOfProducts = await productQuery.find();
-  console.log('product.media.items', listOfProducts.items);
   // if(!listOfProducts) return notFound();
 
   return (
