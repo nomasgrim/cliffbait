@@ -46,8 +46,7 @@ const AboutPage = () => {
           </h2>
 
           <p className="mb-4 text-lg leading-relaxed">
-            I grew up fishing Colorado, Alaska, Michigan, and Minnesota—where the water freezes before your patience does.
-            Eventually, I traded ice for opportunity and headed south to Florida.
+            I grew up fishing all over Colorado, Alaska, Kansas, Michigan, Missouri, Minnesota, and Wisconsin—where ice freezes and patiences wears thin, I traded ice for opportunity and headed south to Florida.
           </p>
 
           <p className="mb-6 text-lg leading-relaxed">
