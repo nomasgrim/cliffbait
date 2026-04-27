@@ -12,6 +12,9 @@ const NavBar = () => {
         <Link href="/">
           <Image src="/home.png" alt="Cliff Bait" width={40} height={40} />
         </Link>
+        <div className="gap-4">
+          <Link href="/about">About</Link>
+        </div>
         <Menu />
       </div>
       {/* Bigger Screens */}
@@ -22,7 +25,8 @@ const NavBar = () => {
             <Image src="/logo.png" alt="Cliff Bait" width={24} height={24} />
             <div className="text-2xl tracking-wide">Cliff Bait</div>
           </Link>
-          <div className="hidden xl:flex gap-4">
+          <div className="gap-4">
+            <Link href="/about">About</Link>
             {/* <Link href="/shop">Shop</Link>
             <Link href="/deals">Deals</Link>
             <Link href="/about">About</Link>

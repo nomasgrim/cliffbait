@@ -39,9 +39,10 @@ const Footer = () => {
             <h1 className="font-medium text-lg">Company</h1>
             <div className="flex flex-col gap-6">
               <Link href="/">Home</Link>
+              <Link href="/about">About</Link>
               {/* <Link href="/">Shop</Link>
               <Link href="/">Deals</Link>
-              <Link href="/">About</Link>
+              
               <Link href="/">Contact</Link> */}
             </div>
           </div>
