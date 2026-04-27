@@ -170,15 +170,8 @@ const AboutPage = () => {
           </p>
 
           <img
-            src="https://static.wixstatic.com/media/6f3554_2633a2d9f2664c16890dba793a197cd1~mv2.png"
-            alt="Handmade Cliff Bait fishing lures ready to use"
-            className="w-full rounded-xl shadow-sm"
-            loading="lazy"
-          />
-
-          <img
-            src="https://static.wixstatic.com/media/6f3554_b9ad4e23cef84aad9bbbe478b0a4998d~mv2.png"
-            alt="Clifford's Big Red Worm"
+            src="https://static.wixstatic.com/media/6f3554_795cf7e4bbba42aaa58199bf5bb5a469~mv2.jpg"
+            alt="Brother from another mother catching with CliffBait"
             className="w-full rounded-xl shadow-sm"
             loading="lazy"
           />
@@ -193,11 +186,10 @@ const AboutPage = () => {
           <p className="text-lg mb-6">
             Fish smarter. Catch more. Enjoy every second on the water.
           </p>
-
           <img
-            src="https://static.wixstatic.com/media/6f3554_795cf7e4bbba42aaa58199bf5bb5a469~mv2.jpg"
-            alt="Brother from another mother catching with CliffBait"
-            className="w-full rounded-xl shadow-sm"
+            src="https://static.wixstatic.com/media/6f3554_77c8d89f320f47e29552f0267fa735d3~mv2.jpg"
+            alt="Fish on the water"
+            className="w-full rounded-xl shadow-sm mb-4"
             loading="lazy"
           />
 
