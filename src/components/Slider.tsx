@@ -23,17 +23,17 @@ const slides:ISlide[] = [
     alt: "Cliff Bait | Artificial Bass Lures",
     url: "/list?cat=all-products",
     bg: "bg-gradient-to-r from-yellow-50 to-pink-50"
-  }
-  // },
-  // {
-  //   id: 2,
-  //   title: "Lake Placid Charters Company",
-  //   subtitle: "some subtitle"
-  //   description: "Central Florida Air boat adventures",
-  //   img: "https://images.pexels.com/photos/33870392/pexels-photo-33870392.jpeg",
-  //   url: "/",
-  //   bg: "bg-gradient-to-r from-pink-50 to-blue-50"
-  // },
+  },
+  {
+    id: 2,
+    title: "Why choose these baits?",
+    description: "Tales of the Cliff",
+    buttonText: "The Fish Story",
+    img: "https://static.wixstatic.com/media/6f3554_54fe3e103501464ba08841fe99d732fa~mv2.jpg",
+    alt: "Cliff Bait | About",
+    url: "/about",
+    bg: "bg-gradient-to-r from-pink-50 to-blue-50"
+  },
   // {
   //   id: 3,
   //   title: "Bass Addict Tackle",
