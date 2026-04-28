@@ -1,4 +1,5 @@
 import CategoryList from "@/components/CategoryList"
+// import Hero from "@/components/Hero"
 import ProductList from "@/components/ProductList"
 import Slider from "@/components/Slider"
 import { Suspense } from "react"
