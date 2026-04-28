@@ -1,128 +1,151 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
-interface ISlide {
-  id: number,
-  title: string,
-  buttonText?: string,
-  description?: string,
-  img: string,
-  url: string,
-  bg: string,
-  alt: string
-}
-const slides:ISlide[] = [
-  {
-    id: 1,
-    title: "Gotcha BASS!",
-    description: "While you're here, snoop around",
-    buttonText: "Browse Shop",
-    img: "https://assets.codepen.io/125304/lake-june-canal.jpg",
-    alt: "Cliff Bait | Artificial Bass Lures",
-    url: "/list?cat=all-products",
-    bg: "bg-gradient-to-r from-yellow-50 to-pink-50"
-  },
-  {
-    id: 2,
-    title: "Why choose these baits?",
-    description: "Tales of the Cliff",
-    buttonText: "The Fish Story",
-    img: "https://static.wixstatic.com/media/6f3554_54fe3e103501464ba08841fe99d732fa~mv2.jpg",
-    alt: "Cliff Bait | About",
-    url: "/about",
-    bg: "bg-gradient-to-r from-pink-50 to-blue-50"
-  },
-  // {
-  //   id: 3,
-  //   title: "Bass Addict Tackle",
-  //   description: "One stop shop. Get your bait and morning beverage.",
-  //   img: "https://images.pexels.com/photos/25551716/pexels-photo-25551716.jpeg",
-  //   url: "/",
-  //   bg: "bg-gradient-to-r from-blue-50 to-green-50"
-  // },
-  // {
-  //   id: 4,
-  //   title: "Big Water Bait and Tackle",
-  //   description: "The wildest of wild shiners this side of the mississippi",
-  //   img: "https://images.pexels.com/photos/31009117/pexels-photo-31009117.jpeg",
-  //   url: "/",
-  //   bg: "bg-gradient-to-r from-blue-50 to-green-50"
-  // },
-]
+import Link from "next/link";
+import { useSwipeable } from "react-swipeable";
 
-const Slider = () => {
-  const [current, setCurrent] = useState(0);
-
-  useEffect(()=>{
-    const interval = setInterval(()=>{
-      setCurrent((prev)=>(prev === slides.length-1 ? 0 : prev+1))
-    }, 5000);
-
-    return ()=>clearInterval(interval)
-  }, []);
-
-  return (
-    <div className="h-[calc(100vh-80px)] overflow-hidden">
-      <div 
-        className="w-max h-full flex transition-all ease-in-out duration-1000"
-        style={{
-          transform:`translateX(-${current * 100}vw)`
-        }}
-      >
-        {
-          slides.map((slide)=>(
-            <div className={`${slide.bg} w-screen h-full flex flex-col gap-16 xl:flex-row`} key={slide.id}>
-              {/* Text Container */}
-              <div className="h-1/2 xl:h-full xl:w-1/2 flex flex-col items-center justify-center gap-8 2xl:gap-12 text-center">
-                {slide.description && (
-                  <h2 className="text-xl lg:text-3xl xl:text-5xl">
-                    {slide.description}
-                  </h2>
-                )}
-                <h1 className="text-5xl lg:text-6xl xl:text-8xl font-semibold">
-                  {slide.title}
-                </h1>
-                {/* BUTTON/LINK */}
-                <Link href={slide.url}>
-                  <button className="rounded bg-black text-white py-3 px-4">{slide.buttonText}</button>
-                </Link>
-                <div className=""></div>
-              </div>
-              {/* Image Container */}
-              <div className="h-1/2 xl:h-full xl:w-1/2 relative">
-                <Image 
-                  src={slide.img} 
-                  alt={slide.alt} 
-                  fill 
-                  sizes="100%" 
-                  className="object-cover" 
-                />
-              </div>
-            </div>
-          ))
-        }
-      </div>
-      {/* slider pagination */}
-      {/* <div className="absolute m-auto left-1/2 bottom-8 flex gap-4">
-        {
-          slides.map((slide,index)=>(
-            <div 
-              className={
-                `w-3 h-3 rounded-full ring-1 ring-gray-600 cursor-pointer flex items-center justify-center ${current === index ? "scale-150" : ""}`} 
-              key={slide.id}
-              onClick={()=>setCurrent(index)}
-            >
-              {current === index && (
-                <div className="w-[6px] h-[6px] bg-gray-600 rounded-full"></div>
-              )}
-            </div>
-          ))
-        }
-      </div> */}
-    </div>
-  )
+type Slide = {
+  title: string;
+  description: string;
+  cta: string;
+  image: string;
+  link: string;
+  alt: string;
 };
 
-export default Slider;
+const slides: Slide[] = [
+  {
+    title: "Bass Attack!",
+    description:
+      "Plastics discovered through trials and tribulations. You'll only find lures that are proven to work. You're welcome!",
+    cta: "Shop Baits",
+    image: "https://static.wixstatic.com/media/6f3554_7d92ccaad5984623bc69d8c8132a3654~mv2.jpg",
+    link: "/list?cat=all-products",
+    alt: "Largemouth bass caught using a Cliff Bait soft plastic lure in Florida freshwater",
+  },
+  {
+    title: "The Big Red Worm",
+    description: "Clifford's Big Red Worm. Bass gobble it up. A color dialed in to trigger a monster bite!",
+    cta: "Get Yours",
+    image: "https://static.wixstatic.com/media/6f3554_5b336b97d136431bbab5dc39f492d317~mv2.jpg",
+    link: "/clifford-s-big-red-worm",
+    alt: "Top selling soft plastic bass fishing lures from Cliff Bait laid out for selection",
+  },
+  {
+    title: "How'd we get here?",
+    description: "It's about catching fish and sharing what works.",
+    cta: "Read more",
+    image: "https://static.wixstatic.com/media/6f3554_7a2b4fcd25f54934a41eb6276f500c35~mv2.png",
+    link: "/about",
+    alt: "Bass fishing from the heart",
+  },
+];
+
+export default function Slider() {
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  const nextSlide = () =>
+    setCurrent((prev) => (prev + 1) % slides.length);
+
+  const prevSlide = () =>
+    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+
+  // Autoplay (slow + respectful)
+  useEffect(() => {
+    if (paused) return;
+
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 7000);
+
+    return () => clearInterval(interval);
+  }, [paused]);
+
+  // Swipe handling
+  const handlers = useSwipeable({
+    onSwipedLeft: () => nextSlide(),
+    onSwipedRight: () => prevSlide(),
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
+
+  return (
+    <section
+      {...handlers}
+      className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 transition-opacity duration-700 ${
+            index === current ? "opacity-100 z-10" : "opacity-0 z-0"
+          }`}
+        >
+          {/* Background Image */}
+          <img
+            src={slide.image}
+            alt={slide.alt}
+            className="w-full h-full object-cover"
+          />
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/50" />
+
+          {/* Content */}
+          <div className="absolute inset-0 flex items-center">
+            <div className="max-w-7xl mx-auto px-6 text-white">
+              <h1 className="text-4xl md:text-5xl font-bold max-w-xl">
+                {slide.title}
+              </h1>
+
+              <p className="mt-4 text-lg text-gray-200 max-w-lg">
+                {slide.description}
+              </p>
+
+              <Link
+                href={slide.link}
+                className="inline-block mt-6 bg-red-500 hover:bg-red-600 text-white font-semibold px-6 py-3 rounded-lg"
+              >
+                {slide.cta}
+              </Link>
+            </div>
+          </div>
+        </div>
+      ))}
+
+      {/* Arrows */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70"
+        aria-label="Previous slide"
+      >
+        ←
+      </button>
+
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70"
+        aria-label="Next slide"
+      >
+        →
+      </button>
+
+      {/* Dots */}
+      <div className="absolute bottom-6 w-full flex justify-center gap-2">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrent(index)}
+            aria-label={`Go to slide ${index + 1}`}
+            className={`h-2 w-2 rounded-full transition ${
+              index === current ? "bg-white scale-125" : "bg-gray-400"
+            }`}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
