@@ -15,6 +15,10 @@ export const metadata: Metadata = {
   title: "Cliff Bait | Artificial Bass Lures",
   description: "Bait, fish will swim off a cliff for. Specialized for Bass.",
   keywords: ['artificial bait', 'custom colors', 'fishing tackle', 'bass fishing', 'bass fishing lures'],
+  metadataBase: new URL('https://cliffbait.com'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'Artificial Bass Lures',
     description: 'Bait, fish will swim off a cliff for. Specialized for Bass.',
