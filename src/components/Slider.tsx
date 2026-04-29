@@ -15,9 +15,9 @@ type Slide = {
 
 const slides: Slide[] = [
   {
-    title: "Bass Attack!",
+    title: "Bass Love It!",
     description:
-      "Plastics discovered through trials and tribulations. You'll only find lures that are proven to work. You're welcome!",
+      "Lures discovered through trials and tribulations. You'll only find lures that work. You're welcome!",
     cta: "Shop Baits",
     image: "https://static.wixstatic.com/media/6f3554_7d92ccaad5984623bc69d8c8132a3654~mv2.jpg",
     link: "/list?cat=all-products",
@@ -33,7 +33,7 @@ const slides: Slide[] = [
   },
   {
     title: "How'd we get here?",
-    description: "It's about catching fish and sharing what works.",
+    description: "It's about delivering on a promise, catching fish and sharing what works.",
     cta: "Read more",
     image: "https://static.wixstatic.com/media/6f3554_7a2b4fcd25f54934a41eb6276f500c35~mv2.png",
     link: "/about",
