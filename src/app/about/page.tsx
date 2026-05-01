@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: "Cliff Bait",
     images: [
       {
-        url: "https://static.wixstatic.com/media/6f3554_597039e4cbab4fde8c6e203507bd0b3f~mv2.png",
+        url: "https://static.wixstatic.com/media/6f3554_14be2dd5a1bc4df580d3dca48e67aaac~mv2.jpg",
         width: 1200,
         height: 630,
       },
@@ -58,7 +58,7 @@ const AboutPage = () => {
           </h2>
 
           <p className="mb-4 text-lg leading-relaxed">
-            It didn’t start with a business plan. It started with a promise—
+            It didn't start with a business plan. It started with a promise—
             one made to my grandpa: I was going to catch the biggest bass that water had ever seen.
           </p>
 

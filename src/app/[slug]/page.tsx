@@ -26,6 +26,9 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
     description: product.description
       ? product.description.replace(/<[^>]+>/g, "").slice(0, 160)
       : "Premium bass fishing lures from Cliff Bait.",
+    alternates: {
+      canonical: `/${slug}`,
+    },
     openGraph: {
       title: `Cliff Bait | ${product.name}`,
       description: product.description

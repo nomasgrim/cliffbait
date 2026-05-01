@@ -17,6 +17,9 @@ export async function generateMetadata({
   return {
     title: `Cliff Bait | ${name}`,
     description: `Browse ${name.toLowerCase()} from Cliff Bait. Built for bass anglers who want results.`,
+    alternates: {
+      canonical: `/list`,
+    },
     openGraph: {
       title: `Cliff Bait | ${name}`,
       description: `Browse ${name.toLowerCase()} from Cliff Bait. Built for bass anglers who want results.`,
