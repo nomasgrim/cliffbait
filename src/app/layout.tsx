@@ -20,9 +20,9 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Artificial Bass Lures',
-    description: 'Bait, fish will swim off a cliff for. Specialized for Bass.',
-    url: 'https://www.cliffbait.com',
+    title: 'Cliff Bait | Providing you an advantage!',
+    description: 'Artificial lures hand crafted, proven to work, and suggested by Bass Masters!',
+    url: 'https://cliffbait.com',
     siteName: 'Cliff Bait',
     images: [
       'https://static.wixstatic.com/media/6f3554_597039e4cbab4fde8c6e203507bd0b3f~mv2.png',
