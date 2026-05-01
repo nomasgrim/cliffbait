@@ -15,25 +15,25 @@ type Slide = {
 
 const slides: Slide[] = [
   {
-    title: "Bass Love It!",
+    title: "Bass-Tested. Strike Approved.",
     description:
-      "Lures discovered through trials and tribulations. You'll only find lures that work. You're welcome!",
-    cta: "Shop Baits",
+      "If it\'s in this shop, it\'s been put through real water and real fish. No hype pieces, no shelf fillers. Just baits that make bass commit.",
+    cta: "Get some!",
     image: "https://static.wixstatic.com/media/6f3554_7d92ccaad5984623bc69d8c8132a3654~mv2.jpg",
     link: "/list?cat=all-products",
     alt: "Largemouth bass caught using a Cliff Bait soft plastic lure in Florida freshwater",
   },
   {
-    title: "The Big Red Worm",
-    description: "Clifford's Big Red Worm. Bass gobble it up. A color dialed in to trigger a monster bite!",
-    cta: "Get Yours",
+    title: "Clifford\'s Big Red Worm",
+    description: "Bass don\'t nibble it… they inhale it. This red is tuned to flip the switch on big bites when nothing else gets a look.",
+    cta: "Grab yours!",
     image: "https://static.wixstatic.com/media/6f3554_5b336b97d136431bbab5dc39f492d317~mv2.jpg",
     link: "/clifford-s-big-red-worm",
     alt: "Top selling soft plastic bass fishing lures from Cliff Bait laid out for selection",
   },
   {
     title: "How'd we get here?",
-    description: "It's about delivering on a promise, catching fish and sharing what works.",
+    description: "It\'s about delivering on a promise, catching fish and sharing what works.",
     cta: "Read more",
     image: "https://static.wixstatic.com/media/6f3554_7a2b4fcd25f54934a41eb6276f500c35~mv2.png",
     link: "/about",

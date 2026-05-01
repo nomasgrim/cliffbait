@@ -29,9 +29,5 @@ export const getCategory = cache(async (slug: string) => {
 
   const category = await wixClient.collections.getCollection(id);
 
-  console.log('slug', slug);
-  console.log('id', id);
-  console.log('category', category);
-
   return category || null;
 });
