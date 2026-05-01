@@ -1,3 +1,38 @@
+import { Metadata } from "next";
+
+export const dynamic = "force-static"; // 🔒 locks metadata into <head>
+
+export const metadata: Metadata = {
+  title: "Cliff Bait | How we got here",
+  description: "About Cliff Bait and what came to be",
+  keywords: [
+    "artificial bait",
+    "custom colors",
+    "fishing tackle",
+    "bass fishing",
+    "bass fishing lures",
+  ],
+  metadataBase: new URL("https://cliffbait.com"), // ✅ FIXED
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "Cliff Bait | How we got here",
+    description: "About Cliff Bait and what came to be",
+    url: "https://cliffbait.com/about",
+    siteName: "Cliff Bait",
+    images: [
+      {
+        url: "https://static.wixstatic.com/media/6f3554_597039e4cbab4fde8c6e203507bd0b3f~mv2.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+};
+
 const AboutPage = () => {
   return (
     <main className="bg-white text-gray-900">

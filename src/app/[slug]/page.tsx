@@ -5,16 +5,53 @@ import { wixClientServer } from "@/lib/wixClientServer";
 import { notFound } from "next/navigation";
 import DOMPurify from "isomorphic-dompurify";
 
+import { Metadata } from "next";
+import { getProduct } from "@/helpers/functions";
+
+export const dynamic = "force-static"; // 🔒 locks metadata into <head>
+
+export async function generateMetadata({ params }: any): Promise<Metadata> {
+  const { slug } = await params;
+
+  const product = await getProduct(slug);
+
+  if (!product) {
+    return {
+      title: "Product Not Found | Cliff Bait",
+    };
+  }
+
+  return {
+    title: `Cliff Bait | ${product.name}`,
+    description: product.description
+      ? product.description.replace(/<[^>]+>/g, "").slice(0, 160)
+      : "Premium bass fishing lures from Cliff Bait.",
+    openGraph: {
+      title: `Cliff Bait | ${product.name}`,
+      description: product.description
+        ? product.description.replace(/<[^>]+>/g, "").slice(0, 160)
+        : "Premium bass fishing lures from Cliff Bait.",
+      url: `https://cliffbait.com/product/${slug}`,
+      siteName: "Cliff Bait",
+      images: product.media?.items?.[0]?.image?.url
+        ? [
+            {
+              url: product.media.items[0].image.url,
+              width: 1200,
+              height: 630,
+            },
+          ]
+        : [],
+      type: "website",
+    },
+  };
+}
+
 const SinglePage = async ({
   params
 }:any) => {
   const { slug } = await params;
-  const wixClient = await wixClientServer();
-  const products = await wixClient.products
-    .queryProducts()
-    .eq("slug",slug)
-    .find();
-  const product = products.items[0];
+  const product = await getProduct(slug);
 
   if(!product) {
     return notFound();
