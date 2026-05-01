@@ -12,16 +12,16 @@ import AnalyticsProvider from "@/analytics/AnalyticsProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Cliff Bait | Artificial Bass Lures",
-  description: "Bait, fish will swim off a cliff for. Specialized for Bass.",
+  title: "Cliff Bait | Turn Casts Into Strikes",
+  description: "Handmade lures dialed in for one thing only: getting crushed. Tried, tested, and approved by anglers who live for the strike.",
   keywords: ['artificial bait', 'custom colors', 'fishing tackle', 'bass fishing', 'bass fishing lures'],
   metadataBase: new URL('https://cliffbait.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Cliff Bait | Providing you an advantage!',
-    description: 'Artificial lures hand crafted, proven to work, and suggested by Bass Masters!',
+  title: "Cliff Bait | Turn Casts Into Strikes",
+  description: "Handmade lures dialed in for one thing only: getting crushed. Tried, tested, and approved by anglers who live for the strike.",
     url: 'https://cliffbait.com',
     siteName: 'Cliff Bait',
     images: [
