@@ -71,6 +71,7 @@ export const getBlogPostBySlug = cache(async (slug: string) => {
     excerpt: data.excerpt,
     publishedDate: data.publishedDate || data.firstPublishedDate,
     content: data.richContent || data.content || null,
+    coverImage: data.coverImage,
     heroImage: data.media?.wixMedia?.image
       ? `https://static.wixstatic.com/media/${data.media.wixMedia.image}`
       : null,
@@ -79,3 +80,17 @@ export const getBlogPostBySlug = cache(async (slug: string) => {
 
 export const getBlogPostsCached = cache(getBlogPosts);
 export const getBlogPostBySlugCached = cache(getBlogPostBySlug);
+
+export function wixImageToUrl(src: string | undefined | null) {
+  if (!src) return null;
+
+  // already usable URL
+  if (src.startsWith("http")) return src;
+
+  // extract wix media id
+  const match = src.match(/\/([^\/?#]+~mv2\.[a-z]+)/);
+
+  if (!match?.[1]) return null;
+
+  return `https://static.wixstatic.com/media/${match[1]}`;
+}

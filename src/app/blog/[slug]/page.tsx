@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getBlogPostBySlugCached } from "@/helpers/functions";
+import { wixImageToUrl } from "@/helpers/functions";
 
 export default async function BlogPostPage({
   params,
@@ -7,7 +8,6 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-
   const post = await getBlogPostBySlugCached(slug);
 
   if (!post) return notFound();
@@ -48,6 +48,7 @@ export default async function BlogPostPage({
 ========================= */
 
 function renderContent(content: any) {
+  console.log('content', content);
   if (!content || !content.nodes) {
     return <p>No content found.</p>;
   }
