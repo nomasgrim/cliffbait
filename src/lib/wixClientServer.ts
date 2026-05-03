@@ -1,9 +1,10 @@
 import { OAuthStrategy, createClient } from "@wix/sdk";
-import { collections, products } from "@wix/stores";
+import { products, collections } from "@wix/stores";
 import { orders } from "@wix/ecom";
 import { cookies } from "next/headers";
-import { members } from '@wix/members';
-import { collections as content } from "@wix/data";
+import { members } from "@wix/members";
+import { posts } from "@wix/blog";
+import { items } from "@wix/data";
 
 export const wixClientServer = async () => {
   let refreshToken;
@@ -13,13 +14,14 @@ export const wixClientServer = async () => {
     refreshToken = JSON.parse(cookieStore.get("refreshToken")?.value || "{}");
   } catch (e) {}
 
-  const wixClient = createClient({
+  return createClient({
     modules: {
       products,
-      collections,
+      collections, // 🛒 PRODUCT categories (this is correct)
       orders,
       members,
-      content
+      posts,
+      items
     },
     auth: OAuthStrategy({
       clientId: process.env.NEXT_PUBLIC_WIX_CLIENT_ID!,
@@ -29,6 +31,4 @@ export const wixClientServer = async () => {
       },
     }),
   });
-
-  return wixClient;
 };
