@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
+    "@wix/blog": "^1.0.601",
     "@wix/crm": "^1.0.1061",
     "@wix/data": "^1.0.303",
     "@wix/ecom": "^1.0.1411",
