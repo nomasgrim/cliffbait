@@ -1,6 +1,39 @@
 import { notFound } from "next/navigation";
-import { getBlogPostBySlugCached } from "@/helpers/functions";
-import { wixImageToUrl } from "@/helpers/functions";
+import { getBlogPostBySlugCached, wixImageToUrl } from "@/helpers/functions";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+
+  const post = await getBlogPostBySlugCached(slug);
+
+  if (!post) {
+    return {
+      title: "Blog | Cliff Bait",
+      description: "Fish stories, lure experiments, and digital chaos.",
+    };
+  }
+
+  return {
+    title: `${post.title} | Cliff Bait`,
+    description: post.excerpt || "Fish stories from Cliff Bait.",
+    openGraph: {
+      title: post.title,
+      description: post.excerpt || "",
+      type: "article",
+      url: `https://cliffbait.com/blog/${slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt || "",
+    },
+  };
+}
 
 export default async function BlogPostPage({
   params,
@@ -13,7 +46,7 @@ export default async function BlogPostPage({
   if (!post) return notFound();
 
   return (
-    <article className="max-w-3xl mx-auto px-4 py-10">
+    <article className='px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative md:mt-20'>
       {/* TITLE */}
       <h1 className="text-4xl font-bold mb-4">
         {post.title}
@@ -48,7 +81,6 @@ export default async function BlogPostPage({
 ========================= */
 
 function renderContent(content: any) {
-  console.log('content', content);
   if (!content || !content.nodes) {
     return <p>No content found.</p>;
   }
