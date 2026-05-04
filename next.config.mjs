@@ -1,5 +1,3 @@
-import { hostname } from 'os';
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -17,7 +15,23 @@ const nextConfig = {
         hostname: "assets.codepen.io"
       }
     ]
-  }
+  },
+  // Add the redirects section here
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'blog.cliffbait.com',
+          },
+        ],
+        destination: 'https://cliffbait.com/blog/:path*',
+        permanent: true,
+      },
+    ]
+  },
 };
 
 export default nextConfig;
