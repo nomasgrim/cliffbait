@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-  title: "Cliff Bait | Turn Casts Into Strikes",
-  description: "Handmade lures dialed in for one thing only: getting crushed. Tried, tested, and approved by anglers who live for the strike.",
+    title: "Cliff Bait | Turn Casts Into Strikes",
+    description: "Handmade lures dialed in for one thing only: getting crushed. Tried, tested, and approved by anglers who live for the strike.",
     url: 'https://cliffbait.com',
     siteName: 'Cliff Bait',
     images: [
       {
-        url: '/logo.svg',
+        url: '/og-cliffbait.png',
         width: 1200,
         height: 630,
       },
