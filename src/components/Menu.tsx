@@ -35,7 +35,7 @@ const Menu = () => {
   if(!isClient) return null;
 
   return (
-    <div className="">
+    <div className="px-4">
       {/* <Image 
         src="/menu.png" 
         alt="menu" 
