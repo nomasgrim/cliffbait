@@ -25,8 +25,11 @@ export const metadata: Metadata = {
     url: 'https://cliffbait.com',
     siteName: 'Cliff Bait',
     images: [
-      'https://static.wixstatic.com/media/6f3554_597039e4cbab4fde8c6e203507bd0b3f~mv2.png',
-      'https://static.wixstatic.com/media/6f3554_2633a2d9f2664c16890dba793a197cd1~mv2.png'
+      {
+        url: '/logo.svg',
+        width: 1200,
+        height: 630,
+      },
     ],
     locale: 'en_US',
     type: 'website'
